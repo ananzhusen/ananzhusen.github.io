@@ -87,12 +87,10 @@
 <meta property="og:site_name" content="Anzhusen">
 <meta property="og:description" content="介绍Django是一个开放源代码的Web应用框架，由Python写成。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="d:/Hexo/source/image/success_django.png">
-<meta property="og:updated_time" content="2019-04-15T14:28:01.099Z">
+<meta property="og:updated_time" content="2019-04-17T07:39:21.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="学习Django框架">
 <meta name="twitter:description" content="介绍Django是一个开放源代码的Web应用框架，由Python写成。">
-<meta name="twitter:image" content="d:/Hexo/source/image/success_django.png">
 
 
 
@@ -386,7 +384,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  2.3k
                 </span>
               
 
@@ -402,7 +400,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  10
                 </span>
               
             </div>
@@ -437,9 +435,10 @@
 <li><p>运行:我们进入 hellodjango 目录(pycharm下，点击 Terminal)，输入以下命令，启动服务器：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py runserver 127.0.0.1:8000</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>打开显示的网址()，可以看到第一个django请求运行成功.<br><img src="D:\Hexo\source\image\success_django.png" alt="django successful"><br>#######  目录说明：</p>
+<li><p>打开显示的网址()，可以看到第一个django请求运行成功.</p>
 </li>
 </ol>
+<p>#######  目录说明：</p>
 <ul>
 <li>HelloWorld: 项目的容器。</li>
 <li>manage.py: 一个实用的命令行工具，可让你以各种方式与该 Django 项目进行交互。</li>
@@ -496,12 +495,102 @@
 <li>说明：在前面我们已经配置过模板路径和静态文件路径,所以可以直接运用自己web网页设计知识对你的页面进行设计、美化和动态交互，记得在你html文件中要连接css、js或图片文件时，前面添加路径（/static/），例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;/static/commons.css&quot;/&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h5 id="模板特殊标记"><a href="#模板特殊标记" class="headerlink" title="模板特殊标记"></a>模板特殊标记</h5><h6 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h6><p>urls.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line"><span class="keyword">return</span> render(request,<span class="string">'模板路径‘)，</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    '</span>k1<span class="string">':'</span>v1<span class="string">',</span></span><br><span class="line"><span class="string">    '</span>k2<span class="string">':[1,2,32,34],#列表</span></span><br><span class="line"><span class="string">    '</span>k3<span class="string">':&#123;'</span>k1<span class="string">':'</span>v1<span class="string">','</span>k2<span class="string">':'</span>v2<span class="string">',...&#125;,# 字典</span></span><br><span class="line"><span class="string">    '</span>user_list_dict<span class="string">':[&#123;&#125;] ，#列表[字典]</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">)</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="模板标签"><a href="#模板标签" class="headerlink" title="模板标签"></a>模板标签</h5><h6 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h6><p>urls.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line"><span class="keyword">return</span> render(request,<span class="string">'模板路径‘)，</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">    '</span>k1<span class="string">':'</span>v1<span class="string">',</span></span><br><span class="line"><span class="string">    '</span>k2<span class="string">':[1,2,32,34],#列表</span></span><br><span class="line"><span class="string">    '</span>k3<span class="string">':&#123;'</span>k1<span class="string">':'</span>v1<span class="string">','</span>k2<span class="string">':'</span>v2<span class="string">',...&#125;,# 字典</span></span><br><span class="line"><span class="string">    '</span>user_list_dict<span class="string">':[&#123;&#125;] ，#列表[字典]</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">)</span></span><br></pre></td></tr></table></figure></p>
 <p>index.html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;&#123;&#123;k1&#125;&#125;&lt;/h1&gt;</span><br><span class="line">&lt;h1&gt;&#123;&#123;k2.2&#125;&#125;&lt;/h1&gt;</span><br><span class="line">&lt;h1&gt;&#123;&#123;k3.&#125;&#125;&lt;/h1&gt;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>模板过滤器可以在变量被显示前修改它，过滤器使用管道字符，如下所示：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; name|lower &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>name  变量被过滤器 lower 处理后，文档大写转换文本为小写。</p>
+<ul>
+<li>过滤管道可以被<em> 套接</em> ，既是说，一个过滤器管道的输出又可以作为下一个管道的输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; my_list|first|upper &#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上实例将第一个元素并将其转化为大写。</p>
+<ul>
+<li>有些过滤器有参数。 过滤器的参数跟随冒号之后并且总是以双引号包含。 例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; bio|truncatewords:&quot;30&quot; &#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这个将显示变量 bio 的前30个词。</p>
+<ul>
+<li>其他过滤器：</li>
+</ul>
+<ol>
+<li>addslashes : 添加反斜杠到任何反斜杠、单引号或者双引号前面。</li>
+<li>date : 按指定的格式字符串参数格式化 date 或者 datetime 对象，实例：</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; pub_date|date:&quot;F j, Y&quot; &#125;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>length : 返回变量的长度。</p>
+</li>
+</ol>
 <p><strong>说明</strong>：django标签通过 ‘.’ 索引</p>
+<h6 id="if-else-标签"><a href="#if-else-标签" class="headerlink" title="if/else 标签"></a>if/else 标签</h6><p>基本语法格式如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if condition %&#125;</span><br><span class="line">     ... display</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+<p>或者：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if condition1 %&#125;</span><br><span class="line">   ... display 1</span><br><span class="line">&#123;% elif condition2 %&#125;</span><br><span class="line">   ... display 2</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">   ... display 3</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>
+<p>根据条件判断是否输出。if/else 支持嵌套。</p>
+<ul>
+<li><strong>说明：</strong> if 标签接受 and ， or 或者 not 关键字来对多个变量做判断 ，或者对变量取反（ not )。</li>
+</ul>
 <h6 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>循环<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">&#123;% for item in users%&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>&#123;&#123;item&#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">&#123;% endfor %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>可以与html搭配使用</li>
+<li><strong>说明</strong>： 可以与html搭配使用</li>
+</ul>
+<h6 id="ifequal-ifnotequal-标签"><a href="#ifequal-ifnotequal-标签" class="headerlink" title="ifequal/ifnotequal 标签"></a>ifequal/ifnotequal 标签</h6><p> ifequal  标签比较两个值，当他们相等时，显示在 ifequal 和  endifequal 之中所有的值。</p>
+<p>下面的例子比较两个模板变量 user 和 currentuser :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% ifequal user currentuser %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Welcome!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% endifequal %&#125;</span><br></pre></td></tr></table></figure>
+<p>和 if  类似，  ifequal 支持可选的 else标签：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% ifequal section 'sitenews' %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Site News<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>No News Here<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">&#123;% endifequal %&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="注释标签"><a href="#注释标签" class="headerlink" title="注释标签"></a>注释标签</h6><p>Django 注释使用 。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;# 这是一个注释 #&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="include-标签"><a href="#include-标签" class="headerlink" title="include 标签"></a>include 标签</h6><p> include 标签允许在模板中包含其它的模板的内容。</p>
+<p>下面这个例子都包含了 nav.html 模板：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include &quot;nav.html&quot; %&#125;</span><br></pre></td></tr></table></figure></p>
+<h5 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h5><p>模板可以用继承的方式来实现复用。</p>
+<p>接下来我们先创建之前项目的 templates 目录中添加 father.html 文件，代码如下：</p>
+<ul>
+<li>mysites/templates/father.html 文件代码：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>模板继承<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Django 测试。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123;% block mainbody %&#125;</span><br><span class="line">       <span class="tag">&lt;<span class="name">p</span>&gt;</span>original<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    &#123;% endblock %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上代码中，名为 mainbody 的 block 标签是可以被继承者们替换掉的部分。</p>
+<p>所有的  block 标签告诉模板引擎，子模板可以<strong>重载</strong>这些部分。</p>
+<p>son.html 中继承 father.html，并替换特定 block，son.html 修改后的代码如下：</p>
+<ul>
+<li>mysites/templates/son.html 文件代码：</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;%extends "father.html" %&#125;</span><br><span class="line"> </span><br><span class="line">&#123;% block mainbody %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>继承了 base.html 文件<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+<p>第一行代码说明 son.html 继承了 father.html 文件。可以看到，这里相同名字的 block 标签用以替换 father.html 的相应 block。</p>
+<h5 id="django模型"><a href="#django模型" class="headerlink" title="django模型"></a>django模型</h5><p>Django 对各种数据库提供了很好的支持，包括：PostgreSQL、MySQL、SQLite、Oracle。</p>
+<p>Django 为这些数据库提供了统一的调用API。</p>
+<h6 id="安装mysqlclient"><a href="#安装mysqlclient" class="headerlink" title="安装mysqlclient"></a>安装mysqlclient</h6><p>直接在pycharm的setting里面导入mysqlclient包,如果提示安装错误可以查看下面的链接：<br><a href="https://blog.51cto.com/jiaszwx/2327440" target="_blank" rel="noopener">mysqlclient安装出错 </a></p>
+<h6 id="数据库配置"><a href="#数据库配置" class="headerlink" title="数据库配置"></a>数据库配置</h6><p>我们在项目的 settings.py 文件中找到 DATABASES 配置项，将其信息修改为：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>,  <span class="comment"># 或者使用 mysql.connector.django</span></span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'test_db'</span>,<span class="comment"># 数据库名称</span></span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">'root'</span>,<span class="comment"># 用户</span></span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'an1234'</span>,<span class="comment"># 密码</span></span><br><span class="line">        <span class="string">'HOST'</span>:<span class="string">'localhost'</span>,<span class="comment"># ip</span></span><br><span class="line">        <span class="string">'PORT'</span>:<span class="string">'3306'</span>,<span class="comment"># 端口</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意：</strong>这里添加了中文注释，所以你需要在 HelloWorld/settings.py 文件头部添加 # -<em>- coding: UTF-8 -</em>-。</p>
+<p>上面包含数据库名称和用户的信息，它们与 MySQL 中对应数据库和用户的设置相同。Django 根据这一设置，与 MySQL 中相应的数据库和用户连接起来。</p>
+<h6 id="定义模型"><a href="#定义模型" class="headerlink" title="定义模型"></a>定义模型</h6><ol>
+<li>创建 APP<br>Django规定，如果要使用模型，必须要创建一个app。我们使用以下命令创建一个 TestModel 的 app:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">django-admin startapp TestModel</span><br></pre></td></tr></table></figure>
+<p>目录结构如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Hellodjango</span><br><span class="line">|-- TestModel</span><br><span class="line">|   |-- __init__.py</span><br><span class="line">|   |-- admin.py</span><br><span class="line">|   |-- models.py</span><br><span class="line">|   |-- tests.py</span><br><span class="line">|   `-- views.py</span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>修改 TestModel/models.py 文件：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line"></span><br><span class="line">class Test(models.Model):</span><br><span class="line">    name = models.CharField(max_length=20)</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>接下来在settings.py中找到INSTALLED_APPS这一项，如下：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = (</span><br><span class="line">    &apos;django.contrib.admin&apos;,</span><br><span class="line">    &apos;django.contrib.auth&apos;,</span><br><span class="line">    &apos;django.contrib.contenttypes&apos;,</span><br><span class="line">    &apos;django.contrib.sessions&apos;,</span><br><span class="line">    &apos;django.contrib.messages&apos;,</span><br><span class="line">    &apos;django.contrib.staticfiles&apos;,</span><br><span class="line">    &apos;TestModel&apos;,               # 添加此项</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>在命令行中运行：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$ python manage.py migrate   # 创建表结构</span><br><span class="line"></span><br><span class="line">$ python manage.py makemigrations TestModel  # 让 Django 知道我们在我们的模型有一些变更</span><br><span class="line">$ python manage.py migrate TestModel   # 创建表结构</span><br></pre></td></tr></table></figure>
+<p>看到几行 “Creating table…” 的字样，你的数据表就创建好了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Creating tables ...</span><br><span class="line">……</span><br><span class="line">Creating table TestModel_test  #我们自定义的表</span><br><span class="line">……</span><br></pre></td></tr></table></figure></p>
+<p>表名组成结构为：应用名_类名（如：TestModel_test）。</p>
+<p><strong>注意</strong>：尽管我们没有在models给表设置主键，但是Django会自动添加一个id作为主键。</p>
+<p>接下来你就可以对数据库进行操作了</p>
+<h6 id="相关链接"><a href="#相关链接" class="headerlink" title="相关链接"></a>相关链接</h6><ul>
+<li><a href="https://yq.aliyun.com/articles/609491" target="_blank" rel="noopener">python3 django配置数据库（mysql）</a></li>
+<li><a href="https://blog.csdn.net/g7511991/article/details/80983276" target="_blank" rel="noopener">Django中数据库配置</a></li>
+<li><a href="https://www.cnblogs.com/wcwnina/p/8719482.html" target="_blank" rel="noopener">Django 配置MySQL数据库</a></li>
+<li><a href="https://blog.csdn.net/FightFightFight/article/details/80013032" target="_blank" rel="noopener">[Django] Django(五) 配置mysql数据库</a></li>
+<li><a href="https://www.cnblogs.com/rinka/p/django_database_setting.html" target="_blank" rel="noopener">django-数据库【配置】</a></li>
 </ul>
 
       
@@ -767,7 +856,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目"><span class="nav-number">3.</span> <span class="nav-text">项目</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pycharm创建"><span class="nav-number">3.1.</span> <span class="nav-text">pycharm创建</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#第一个django请求"><span class="nav-number">3.1.1.</span> <span class="nav-text">第一个django请求</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置"><span class="nav-number">3.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#路由关系-url对应关系"><span class="nav-number">3.3.</span> <span class="nav-text">路由关系(url对应关系)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#处理请求函数"><span class="nav-number">3.4.</span> <span class="nav-text">处理请求函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模板特殊标记"><span class="nav-number">3.5.</span> <span class="nav-text">模板特殊标记</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#特殊字符"><span class="nav-number">3.5.1.</span> <span class="nav-text">特殊字符</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#循环"><span class="nav-number">3.5.2.</span> <span class="nav-text">循环</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目"><span class="nav-number">3.</span> <span class="nav-text">项目</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pycharm创建"><span class="nav-number">3.1.</span> <span class="nav-text">pycharm创建</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#第一个django请求"><span class="nav-number">3.1.1.</span> <span class="nav-text">第一个django请求</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#配置"><span class="nav-number">3.2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#路由关系-url对应关系"><span class="nav-number">3.3.</span> <span class="nav-text">路由关系(url对应关系)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#处理请求函数"><span class="nav-number">3.4.</span> <span class="nav-text">处理请求函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模板标签"><span class="nav-number">3.5.</span> <span class="nav-text">模板标签</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#过滤器"><span class="nav-number">3.5.1.</span> <span class="nav-text">过滤器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#if-else-标签"><span class="nav-number">3.5.2.</span> <span class="nav-text">if/else 标签</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#循环"><span class="nav-number">3.5.3.</span> <span class="nav-text">循环</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ifequal-ifnotequal-标签"><span class="nav-number">3.5.4.</span> <span class="nav-text">ifequal/ifnotequal 标签</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#注释标签"><span class="nav-number">3.5.5.</span> <span class="nav-text">注释标签</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#include-标签"><span class="nav-number">3.5.6.</span> <span class="nav-text">include 标签</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#模板继承"><span class="nav-number">3.6.</span> <span class="nav-text">模板继承</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#django模型"><span class="nav-number">3.7.</span> <span class="nav-text">django模型</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#安装mysqlclient"><span class="nav-number">3.7.1.</span> <span class="nav-text">安装mysqlclient</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#数据库配置"><span class="nav-number">3.7.2.</span> <span class="nav-text">数据库配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#定义模型"><span class="nav-number">3.7.3.</span> <span class="nav-text">定义模型</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#相关链接"><span class="nav-number">3.7.4.</span> <span class="nav-text">相关链接</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
