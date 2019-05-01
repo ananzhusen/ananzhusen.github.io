@@ -99,8 +99,13 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/guid3.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/qframe_shape.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/qframe_result.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/qframe_run.png">
-<meta property="og:updated_time" content="2019-04-30T14:17:44.396Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/frame_run.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/button_result.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/lineedit_yanma.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/lineEdit_result.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/datetime_result.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/slider_result.png">
+<meta property="og:updated_time" content="2019-05-01T14:27:14.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QtCreator学习（1）">
 <meta name="twitter:description" content="窗口部件">
@@ -398,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  5.9k
+                  8.8k
                 </span>
               
 
@@ -414,7 +419,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  24
+                  35
                 </span>
               
             </div>
@@ -627,7 +632,93 @@
 <li>然后更改其frameShape属性为Box,更改currentIndex即为第几个”抽屉“,更改其对应cucurrenttItemText分别为“好友”、“黑名单”、“陌生人”、“特别讨厌”、”特别关心“。</li>
 </ol>
 <p>最后所有的运行结果如图所示：</p>
-<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/qframe_run.png" alt="QFrame家族运行效果">)</p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/frame_run.png" alt="QFrame家族运行效果">)</p>
+<h5 id="按钮部件"><a href="#按钮部件" class="headerlink" title="按钮部件"></a>按钮部件</h5><p>  QAbstractButton类是按钮部件的抽象基类，提供了按钮的通用功能。它的子类包括复选框QCheckBox、标准按钮QPushButton.单选框按钮QRadioButton和工具按钮QToolButton。</p>
+<p>  新建Qt Widgets应用,项目名称mybutton,基类选择QWidget,类名设为MyWidget。完成后在项目文件夹中新建images文件夹,并且放人几张图标图片,供下面编写程序时使用。</p>
+<h6 id="QPushButton"><a href="#QPushButton" class="headerlink" title="QPushButton"></a>QPushButton</h6><p>  QPushButton提供- - 个标准按钮。在项目中打开mywidget. ui文件,拖人3个PushButton到界面上.然后将它们的objectName依次更改为pushBtnl、pushBtn2和pushBtn3。下面选中pushBtnl的checkable属性,使得它可以拥有“选中”和“未选中”两种状态;再选中pushBtn2的flat 属性,可以不显示该按钮的边框。然后转到push-Btnl的toggled( bool)信号的槽.更改如下:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> MyWidget::on_pushBtn1_toggled(<span class="keyword">bool</span> checked)<span class="comment">//按钮是否处于被按下状态</span></span><br><span class="line">&#123;</span><br><span class="line">    qDebug()&lt;&lt;tr(<span class="string">"按钮是否按下："</span>)&lt;&lt;checked;<span class="comment">//按下checked为true,否则为false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在MyWidget的构造函数里添加代码：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">include&lt;QMenu&gt;</span><br><span class="line"></span><br><span class="line">   ui-&gt;pushBtn1-&gt;setText(tr(<span class="string">"&amp;nihao"</span>)); <span class="comment">//Alt+n为加速键</span></span><br><span class="line">   ui-&gt;pushBtn2-&gt;setText(tr(<span class="string">"帮助(&amp;H)"</span>));</span><br><span class="line">   <span class="comment">//给按钮添加图标</span></span><br><span class="line">   ui-&gt;pushBtn2-&gt;setIcon(QIcon(<span class="string">"D:/QT/03/3-07/mybutton/images/loading7.png"</span>));</span><br><span class="line">   ui-&gt;pushBtn3-&gt;setText(tr(<span class="string">"z&amp;oom"</span>));</span><br><span class="line">   QMenu *menu =<span class="keyword">new</span> QMenu(<span class="keyword">this</span>);</span><br><span class="line">   menu-&gt;addAction(QIcon(<span class="string">"D:/QT/03/3-07/mybutton/images/selected.png"</span>),tr(<span class="string">"放大"</span>));</span><br><span class="line">   ui-&gt;pushBtn3-&gt;setMenu(menu);</span><br></pre></td></tr></table></figure>
+<h6 id="QcheckBox、QRadioButton和QGroupBox"><a href="#QcheckBox、QRadioButton和QGroupBox" class="headerlink" title="QcheckBox、QRadioButton和QGroupBox"></a>QcheckBox、QRadioButton和QGroupBox</h6><p>  对于调查表之类的应用,往往提供多个选项供选择,有些是可以选择多项的,有些只能选择其中-一项。复选框QCheckBox类提供了同时选择多项的功能,而QRadioButton提供了只能选择- -项的功能，一般要把-一组按钮放到一个QGroupBox中来管理。</p>
+<p>   在设计模式时可往界面上拖人两个Group Box,将它们的标题分别改为“复选框”和“单选框”。然后往复选框中拖人3个Check Box,分别更改显示内容为“跑步”、“踢球”和“游泳”。再往单选框中拖入3个Radio Button,分别更改其显示内容为“很好”、“一般”和“不好”。这里还可以选中CheckBox的tristate属性,让它拥有不改变状态、选中状态和未选中状态3种状态。对于选择按钮后的操作，可以关联它们的state-Changed(&gt;信号和自定义的槽,也可以使用isChecked()函数查看一个按钮是否被选中。除了Group Box,还可以使用QButtonGroup类来管理多个按钮。</p>
+<p>运行结果：</p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/button_result.png" alt="按钮部件运行结果"></p>
+<h5 id="QLineEdit"><a href="#QLineEdit" class="headerlink" title="QLineEdit"></a>QLineEdit</h5><p>  行编辑器QLineEdit部件是-一个单行的文本编辑器，它允许用户输入和编辑单行的纯文本内容,而且提供了一系列有用的功能，包括撤销与恢复、剪切和拖放等操作。<br>  新建Qt Widgets应用,项目名称mylineedit,基类QWidget,类名MyWidget。在设计模式时可往界面上拖人几个标签和Line Edit,设计界面运行结果所示。然后将4个Line Edit从上到下依次更改其objectName为lineEdit1 JlineEdit2 . lineEdit3和lineEdit4。</p>
+<ol>
+<li><p>显示模式</p>
+<p>行编辑器QLineEdit有4种显示模式(echoMode),可以在echoMode属性中更改它们，分别是:</p>
+</li>
+</ol>
+<ul>
+<li>Normal正常显示输人的信息;NoEcho不显示任何输人，这样可以保证不泄露输人的字符位数;</li>
+<li>Password显示为密码样式,就是以小黑点或星号之类的字符代替输人的字符;</li>
+<li>PasswordEchoOnEdit在编辑时显示正常字符，其他情况下显示为密码样式。</li>
+</ul>
+<p>这里设置lineEdit1的echoMode为Password.</p>
+<ol start="2">
+<li><p>输入掩码</p>
+<p>QLineEdit提供了输人掩码( inputMask)来限制输入的内容。可以使用一些特殊的字符来设置输入的格式和内容.这些字符中有的起限制作用且必须要输入一一个字符，有的只是起限制作用,但可以不输人字符而是以空格代替。先来看一下这些特殊字符的含义,如下表所列。<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/lineedit_yanma.png" alt="Qlineedit掩码字符"></p>
+</li>
+</ol>
+<p>下面将lineEdit2 的inputMask属性设置为“&gt; AA-90-bb-! aa# H; <em>“,其含义为:</em></p>
+<ul>
+<li>“&gt;”号表明后面输人的字母自动转为大写;</li>
+<li>“AA”表明开始必须输人两个字母,因为有前面的“&gt;”号的作用,所以输人的这两个字母会自动变为大写;</li>
+<li>“一”号为分隔符，;直接显示,该位不可输入;</li>
+<li>“9”表示必须输人一个数字;“0”表示输入一个数字,或者留;空;</li>
+<li>“bb”表示这两位可以留空,或者输人两个二进制字符,即0或1;</li>
+<li>“!”表明停止大小写转换，就是在最开始的“&gt;”号不再起作用;</li>
+<li>“aa”表示可以留空,或者输人两个字母;</li>
+<li>“#”表示将“#”号作为分隔符,因为“#”号在这里有特殊含义,所以前面要加上“\”号;</li>
+<li>“H”表明必须输入一个十六进制的字符;</li>
+<li>“; <em>”表示用 “ </em> ”号来填充空格。</li>
+</ul>
+<p>另外,也可以使用setInputMask()函数在代码中来设置输人掩码。</p>
+<p>在lineEdit2上右击,然后转到它的returnPressed()回车键按下信号的槽中。更改代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> MyWidget::on_lineEdit2_returnPressed() <span class="comment">//回车键按下信号的槽</span></span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;lineEdit3-&gt;setFocus();              <span class="comment">//让lineEdit3获得焦点</span></span><br><span class="line">    qDebug()&lt;&lt;ui-&gt;lineEdit2-&gt;text();        <span class="comment">//输入lineEdit2的内容</span></span><br><span class="line">    qDebug()&lt;&lt;ui-&gt;lineEdit2-&gt;displayText(); <span class="comment">//输出lineEdit2显示的内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>输入验证</li>
+</ol>
+<p>在QLineEdit中可以使用验证器（validator）来对输入进行约束<br>在mywidget.cpp的构造函数里添加代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//新建验证器，指定范围为100~999</span></span><br><span class="line">   QValidator *validator=<span class="keyword">new</span> QIntValidator(<span class="number">100</span>,<span class="number">999</span>,<span class="keyword">this</span>);</span><br><span class="line">   <span class="comment">//在行编辑器中使用验证器</span></span><br><span class="line">   ui-&gt;lineEdit3-&gt;setValidator(validator);</span><br></pre></td></tr></table></figure></p>
+<p>  在代码中为lineEdit3添加了验证器,那么它现在只能输人100~999之间的数字。再进人lineEdit3的回车键按下信号的槽,输出lineEdit3 的内容。然后运行程序会发现,其他的字符无法输入，而输人小于100的数字时,按下回车键也是没有效果的。QValidator中还提供了QDoubleValidator,可以用它来设置浮点数。如果想设置更强大的字符约束.就要使用正则表达式了</p>
+<ol start="4">
+<li>自动补全</li>
+</ol>
+<p>QLineEdit提供强大的自动补全功能通过QCompleter类实现<br>在mywidget.cpp的构造函数里添加代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QCompleter&gt;</span></span></span><br><span class="line"></span><br><span class="line">   QStringList wordList;</span><br><span class="line">   <span class="comment">//在行编辑器里输入“Q"，自动出现"QT"和”QT Creator“两个选项</span></span><br><span class="line">   wordList&lt;&lt;<span class="string">"QT"</span>&lt;&lt;<span class="string">"QT Creator"</span>&lt;&lt;tr(<span class="string">"你好"</span>);</span><br><span class="line">   QCompleter *completer=<span class="keyword">new</span> QCompleter(wordList,<span class="keyword">this</span>); <span class="comment">//新建自动完成器</span></span><br><span class="line">   completer-&gt;setCaseSensitivity(Qt::CaseInsensitive);  <span class="comment">//设置大小写不敏感</span></span><br><span class="line">   ui-&gt;lineEdit4-&gt;setCompleter(completer);</span><br></pre></td></tr></table></figure></p>
+<p>运行结果：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/lineEdit_result.png" alt="Qlineedit运行结果"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Debugging starts</span><br><span class="line">&quot;AB-12-01- ac#d&quot;</span><br><span class="line">&quot;AB-12-01- ac#d&quot;</span><br><span class="line">&quot;123&quot;</span><br><span class="line">&quot;123&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="QAbstractSpinBox"><a href="#QAbstractSpinBox" class="headerlink" title="QAbstractSpinBox"></a>QAbstractSpinBox</h5><p>  QAbstractSpinBox类是-一个抽象基类,提供了一个数值设定框和- 个行编辑器来显示设定值。它有3个子类QDate TimeEdit、QSpinBox和QDoubleSpinBox,分别用来完成日期时间、整数和浮点数的设定。</p>
+<p>  新建Qt Widgets 应用,项目名称myspinbox,基类为QWidget,类名MyWidget。</p>
+<h6 id="QDateTimeEdit"><a href="#QDateTimeEdit" class="headerlink" title="QDateTimeEdit"></a>QDateTimeEdit</h6><p>  QDateTimeEdit类提供了一个可以编辑日期和时间的部件。到设计模式,从部件栏中分别拖TimeEdit.DateEdit和Date/TimeEdit到界面上,然后设置timeEdit的;displayFormat为“h:mm:ssA” ,这就可以使用12 h制来进行显示。对于dateEdit, 选中它的calendarPopup属性,就可以使用弹出的日历部件来设置日期。然后在MyWid-get类的构造函数中添加代码:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置时间为现在的系统时间</span></span><br><span class="line">  ui-&gt;dateEdit-&gt;setDateTime(QDateTime::currentDateTime());</span><br><span class="line">  <span class="comment">//设置时间的显示格式</span></span><br><span class="line">  ui-&gt;dateTimeEdit-&gt;setDisplayFormat(tr(<span class="string">"yyyy年MM月dd日dddHH时mm分ss秒"</span>));</span><br></pre></td></tr></table></figure></p>
+<p> 这里使用代码设置了dateTimeEdit中的日期和时间。简单说明一下:y表示年;M表示月;d表示日;而ddd表示星期;H表示小时,使用24 h制显示,而h也表示小时，如果最后有AM或者PM的,则是12 h制显示,否则使用24 h制;m表示分;s表示秒;还有一个z可以用来表示毫秒。更多的格式可以参考QDateTime类。现在运行程序查看效果。还要说明，可以使用该部件的text()函数获取设置的值,它返回QString类型的字符串;也可以使用dateTime()函数,它返回的是QDateTime类型数据。</p>
+<h6 id="QSpinBox-和QDoubleSpinBox"><a href="#QSpinBox-和QDoubleSpinBox" class="headerlink" title="QSpinBox 和QDoubleSpinBox"></a>QSpinBox 和QDoubleSpinBox</h6><p>  QSpinBox用来设置整数, QDoubleSpinBox用来设置浮点数。从部件栏中找到Spin Box和Double Spin Box,并将它们拖入到界面上。可以在属性栏中看到spinBox的属性有:后缀suffix属性,可以设置为“%” ,这样就可以显示百分数了;前缀prefix属性,比如表示金钱时前面有“￥”字符;最小值minimum属性,设置其最小值;最大值maximum属性设置其最大值;单步值singleStep属性设置每次增加的数值,默认为l;value 为现在显示的数值。而doubleSpinBox又增加了一个小数位数decimals属性,用来设置小数点后面的位数。<strong>可以在代码中使用value()函数来获取设置的数值。</strong></p>
+<p>运行结果：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/datetime_result.png" alt="时间日期运行结果"></p>
+<h5 id="QAbstractSlider"><a href="#QAbstractSlider" class="headerlink" title="QAbstractSlider"></a>QAbstractSlider</h5><p>  QAbstractSlider类用于提供区间内的一个整数值,它有一个滑块,可以定位到一个整数区间的任意值。该类是一个抽象基类,它有3个子类QSerollBar、QSlider和QDial。其中，滚动条QScrollBar多数是用在QScrollArea类中来实现滚动区域;QSllider就是常见的音量控制或多媒体播放进度等滑块部件;QDial是-一个刻度表盘部件。<br>  新建Qt Widgets应用,项目名称myslider,基类选择QWidget,类名为MyWidget。完成后到设计模式,从部件栏中分别将Dial、Horizontal Scroll Bar和Vertical Scroll Bar、 Horizontal Slider以及Vertical Slider 等部件拖人到界面上。</p>
+<ol>
+<li>先看两个ScrollBar的属性:</li>
+</ol>
+<ul>
+<li>maximum属性用来设置最大值,minimum属性用来设置最小值;</li>
+<li>singleStep属性是每步的步长,默认是1,就是按下方向键后其数值增加或者减少1;</li>
+<li>pageStep是每页的步长,默认是10,就是按下PageUp或者PageDown按键后,其数值增加或者减少10;</li>
+<li>value与sliderPosition是当前值;</li>
+<li>tracking设置是否跟踪,.默认为是,就是在拖动滑块时,每移动一个刻度,都会发射valueChanged()信号，如果选择否,则只有拖动滑块释放时才发射该信号;</li>
+<li>orientation设置部件的方向,有水平和垂直两种选择;</li>
+<li>invertedAppearance属性设置滑块所在的位置,比如默认滑块开始在最左端，选中这个属性后,滑块默认就会在最右端。</li>
+<li>invertedControls设置反向控制,比如默认是向上方向键是增大,向下方向键是减小,如果选中这个属性,那么控制就会正好反过来。</li>
+<li>另外,为了使部件可以获得焦点,需要将focusPolicy设置为StrongFocus。</li>
+</ul>
+<ol start="2">
+<li>再来看两个Slider</li>
+</ol>
+<ul>
+<li>它们有了自己的两个属性tickPosition和tickInterval,前者用来设置显示刻度的位置,默认是不显示刻度;后者是设置刻度的间隔。</li>
+<li>而Dial有自己的属性wrapping,用来设置是否首尾相连,默认开始与结束是分开的;</li>
+<li>属性notchTarget用来设置刻度之间的间隔;</li>
+<li><p>属性notchesVisible用来设置是否显示刻度。</p>
+<p>再往界面上拖人一个SpinBox,然后进人信号和槽编辑界面,将刻度表盘部件dial的sliderMoved(int)信号分别与其他各个部件的setValue(int)槽相连接。设置完成后运行程序，然后使用鼠标拖动刻度盘部件的滑块,可以看到其他所有的部件都跟着变化了。</p>
+<p>运行结果：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/slider_result.png" alt="滑块部件运行结果"></p>
+</li>
+</ul>
 
       
     </div>
@@ -888,7 +979,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口部件"><span class="nav-number">1.</span> <span class="nav-text">窗口部件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础窗口部件QWidget"><span class="nav-number">1.1.</span> <span class="nav-text">基础窗口部件QWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#窗口、子部件以及窗口类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">窗口、子部件以及窗口类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#窗口几何布局"><span class="nav-number">1.1.2.</span> <span class="nav-text">窗口几何布局</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序调试"><span class="nav-number">1.1.3.</span> <span class="nav-text">程序调试</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#设置断点"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">设置断点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用qDebug-函数"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">使用qDebug()函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对话框QDialog"><span class="nav-number">1.2.</span> <span class="nav-text">对话框QDialog</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#模态和非模态对话框"><span class="nav-number">1.2.1.</span> <span class="nav-text">模态和非模态对话框</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多窗口切换"><span class="nav-number">1.2.2.</span> <span class="nav-text">多窗口切换</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#信号和槽"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">信号和槽</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#自定义对话框"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">自定义对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在主界面中使用自定义的对话框"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">在主界面中使用自定义的对话框</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标准对话框"><span class="nav-number">1.2.3.</span> <span class="nav-text">标准对话框</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#颜色对话框"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">颜色对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#文件对话框"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">文件对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字体对话框"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">字体对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入对话框"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">输入对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#消息对话框"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">消息对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#进度条对话框"><span class="nav-number">1.2.3.6.</span> <span class="nav-text">进度条对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#错误信息对话框"><span class="nav-number">1.2.3.7.</span> <span class="nav-text">错误信息对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#向导对话框"><span class="nav-number">1.2.3.8.</span> <span class="nav-text">向导对话框</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他窗口部件"><span class="nav-number">1.3.</span> <span class="nav-text">其他窗口部件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#QFrame类"><span class="nav-number">1.3.1.</span> <span class="nav-text">QFrame类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#QLabel"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">QLabel</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#QLCDNumber"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">QLCDNumber</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#QStackedWidget"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">QStackedWidget</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#QToolBox"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">QToolBox</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口部件"><span class="nav-number">1.</span> <span class="nav-text">窗口部件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基础窗口部件QWidget"><span class="nav-number">1.1.</span> <span class="nav-text">基础窗口部件QWidget</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#窗口、子部件以及窗口类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">窗口、子部件以及窗口类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#窗口几何布局"><span class="nav-number">1.1.2.</span> <span class="nav-text">窗口几何布局</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序调试"><span class="nav-number">1.1.3.</span> <span class="nav-text">程序调试</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#设置断点"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">设置断点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#使用qDebug-函数"><span class="nav-number">1.1.3.2.</span> <span class="nav-text">使用qDebug()函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#对话框QDialog"><span class="nav-number">1.2.</span> <span class="nav-text">对话框QDialog</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#模态和非模态对话框"><span class="nav-number">1.2.1.</span> <span class="nav-text">模态和非模态对话框</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多窗口切换"><span class="nav-number">1.2.2.</span> <span class="nav-text">多窗口切换</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#信号和槽"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">信号和槽</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#自定义对话框"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">自定义对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在主界面中使用自定义的对话框"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">在主界面中使用自定义的对话框</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标准对话框"><span class="nav-number">1.2.3.</span> <span class="nav-text">标准对话框</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#颜色对话框"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">颜色对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#文件对话框"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">文件对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字体对话框"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">字体对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#输入对话框"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">输入对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#消息对话框"><span class="nav-number">1.2.3.5.</span> <span class="nav-text">消息对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#进度条对话框"><span class="nav-number">1.2.3.6.</span> <span class="nav-text">进度条对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#错误信息对话框"><span class="nav-number">1.2.3.7.</span> <span class="nav-text">错误信息对话框</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#向导对话框"><span class="nav-number">1.2.3.8.</span> <span class="nav-text">向导对话框</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他窗口部件"><span class="nav-number">1.3.</span> <span class="nav-text">其他窗口部件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#QFrame类"><span class="nav-number">1.3.1.</span> <span class="nav-text">QFrame类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#QLabel"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">QLabel</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#QLCDNumber"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">QLCDNumber</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#QStackedWidget"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">QStackedWidget</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#QToolBox"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">QToolBox</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#按钮部件"><span class="nav-number">1.3.2.</span> <span class="nav-text">按钮部件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#QPushButton"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">QPushButton</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#QcheckBox、QRadioButton和QGroupBox"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">QcheckBox、QRadioButton和QGroupBox</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#QLineEdit"><span class="nav-number">1.3.3.</span> <span class="nav-text">QLineEdit</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#QAbstractSpinBox"><span class="nav-number">1.3.4.</span> <span class="nav-text">QAbstractSpinBox</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#QDateTimeEdit"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">QDateTimeEdit</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#QSpinBox-和QDoubleSpinBox"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">QSpinBox 和QDoubleSpinBox</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#QAbstractSlider"><span class="nav-number">1.3.5.</span> <span class="nav-text">QAbstractSlider</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
