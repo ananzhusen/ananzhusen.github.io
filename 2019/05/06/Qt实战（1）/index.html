@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="Qt实战通过两个独立窗口的切换来学习信号和槽创建项目  新建Qt Widgets应用,项目名称SingelAndSlot ,类名默认为mainWidget,基类默认为QWidget,不勾选创建界面。  先来认识SingelAndSlot.pro文件： 1234567891011121314151617#添加模块QT       += core gui#高于4版本，添加QT += widgets，为">
+<meta name="description" content="Qt实战">
 <meta name="keywords" content="Qtcreator,实战">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt实战（1）">
 <meta property="og:url" content="http://Anzusen.com/2019/05/06/Qt实战（1）/index.html">
 <meta property="og:site_name" content="Anzhusen">
-<meta property="og:description" content="Qt实战通过两个独立窗口的切换来学习信号和槽创建项目  新建Qt Widgets应用,项目名称SingelAndSlot ,类名默认为mainWidget,基类默认为QWidget,不勾选创建界面。  先来认识SingelAndSlot.pro文件： 1234567891011121314151617#添加模块QT       += core gui#高于4版本，添加QT += widgets，为">
+<meta property="og:description" content="Qt实战">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/mywindow.png">
-<meta property="og:updated_time" content="2019-05-08T07:30:56.345Z">
+<meta property="og:updated_time" content="2019-05-08T07:34:34.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt实战（1）">
-<meta name="twitter:description" content="Qt实战通过两个独立窗口的切换来学习信号和槽创建项目  新建Qt Widgets应用,项目名称SingelAndSlot ,类名默认为mainWidget,基类默认为QWidget,不勾选创建界面。  先来认识SingelAndSlot.pro文件： 1234567891011121314151617#添加模块QT       += core gui#高于4版本，添加QT += widgets，为">
+<meta name="twitter:description" content="Qt实战">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/mywindow.png">
 
 
@@ -423,7 +423,8 @@
       
 
       
-        <h1 id="Qt实战"><a href="#Qt实战" class="headerlink" title="Qt实战"></a>Qt实战</h1><h2 id="通过两个独立窗口的切换来学习信号和槽"><a href="#通过两个独立窗口的切换来学习信号和槽" class="headerlink" title="通过两个独立窗口的切换来学习信号和槽"></a>通过两个独立窗口的切换来学习信号和槽</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>  新建Qt Widgets应用,项目名称SingelAndSlot ,类名默认为mainWidget,基类默认为QWidget,不勾选创建界面。</p>
+        <h1 id="Qt实战"><a href="#Qt实战" class="headerlink" title="Qt实战"></a>Qt实战</h1><a id="more"></a>
+<h2 id="通过两个独立窗口的切换来学习信号和槽"><a href="#通过两个独立窗口的切换来学习信号和槽" class="headerlink" title="通过两个独立窗口的切换来学习信号和槽"></a>通过两个独立窗口的切换来学习信号和槽</h2><h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>  新建Qt Widgets应用,项目名称SingelAndSlot ,类名默认为mainWidget,基类默认为QWidget,不勾选创建界面。</p>
 <ol>
 <li><p>先来认识SingelAndSlot.pro文件：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#添加模块</span><br><span class="line">QT       += core gui</span><br><span class="line"></span><br><span class="line">#高于<span class="number">4</span>版本，添加QT += widgets，为了兼容Qt4</span><br><span class="line">greaterThan(QT_MAJOR_VERSION, <span class="number">4</span>): QT += widgets</span><br><span class="line"></span><br><span class="line">#应用程序的名字</span><br><span class="line">TARGET = SingelAndSlot</span><br><span class="line">#指定SingelAndSlot的类型为app</span><br><span class="line">TEMPLATE = app</span><br><span class="line"></span><br><span class="line">#源文件 .cpp文件</span><br><span class="line">SOURCES += main.cpp\</span><br><span class="line">        mainwidget.cpp</span><br><span class="line"></span><br><span class="line">#头文件 .h文件</span><br><span class="line">HEADERS  += mainwidget.h</span><br></pre></td></tr></table></figure>
