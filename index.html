@@ -282,6 +282,280 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Anzusen.com/2019/05/19/Qt实战（2）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ananzhusen">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Anzhusen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/19/Qt实战（2）/" itemprop="url">Qt实战（2）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-19T21:09:54+08:00">
+                2019-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/界面/" itemprop="url" rel="index">
+                    <span itemprop="name">界面</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/19/Qt实战（2）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/19/Qt实战（2）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="TCP-和-UDP-通信"><a href="#TCP-和-UDP-通信" class="headerlink" title="TCP 和 UDP 通信"></a>TCP 和 UDP 通信</h1><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立<strong>新</strong>的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的。Socket，也就是常说的“套接字”。Socket简单地说，就是一个IP地址加一个port端口<br>  先来看一下TCP通信原理图<br><img src="https://ananzhusen.github.io/images/TCP_connect.jpg" alt="TCP通信原理图"></p>
+<p><img src="https://ananzhusen.github.io/images/tcp_send_text.png" alt="TCP运行结果"></p>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><ol>
+<li>新建项目，选择Qt Widgets应用，项目名为TCP_connect,类名为ServerWidget。</li>
+<li><p>在 TCP_connect.pro内联网，添加以下代码，添加后先编译不运行。（之后的所有有关UDP和CDP，<strong>都要加上这句</strong>，以后不再多说。）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">QT       += core gui network</span><br><span class="line"></span><br><span class="line">CONFIG += C++<span class="number">11</span> <span class="comment">//之后可能会用到c++中的Lambdas表达式，所以把这句也加上</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设计ui界面如生成结果中的服务端</p>
+</li>
+<li>在ServerWidget.h头文件中，添加头文件并，创建监听套接字和通信套接字对象。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTcpServer&gt; //监听套接字</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTcpSocket&gt; //通信套接字</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QTcpServer *tcpServer;<span class="comment">//监听套接字</span></span><br><span class="line">    QTcpSocket *tcpSocket;<span class="comment">//通信套接字</span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>在ServerWidget.h源文件构造函数添加以下</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">  setWindowTitle(<span class="string">"服务器：8888"</span>);</span><br><span class="line"></span><br><span class="line">  tcpServer=<span class="literal">NULL</span>;</span><br><span class="line">  tcpSocket=<span class="literal">NULL</span>;</span><br><span class="line">  <span class="comment">//监听套接字分配空间，父窗口自动回收空间</span></span><br><span class="line">  tcpServer=<span class="keyword">new</span> QTcpServer(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//监听并绑定</span></span><br><span class="line">  tcpServer-&gt;listen(QHostAddress::Any,<span class="number">8888</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//触发新连接</span></span><br><span class="line">  connect(tcpServer,&amp;QTcpServer::newConnection,</span><br><span class="line">          [=]()&#123;</span><br><span class="line">      <span class="comment">//取出建立好连接的套接字并赋值给通信套接字</span></span><br><span class="line">      tcpSocket =tcpServer-&gt;nextPendingConnection();<span class="comment">//取出下一个连接，即当前最近的一个连接</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">//获取对方的ip和端口(peer表示对方）</span></span><br><span class="line">      QString ip=tcpSocket-&gt;peerAddress().toString();<span class="comment">//.toIPv4Address()</span></span><br><span class="line">      qint16 port = tcpSocket-&gt;peerPort();</span><br><span class="line"></span><br><span class="line"><span class="comment">//连接成功</span></span><br><span class="line">      QString temp=QString(<span class="string">"[%1:%2]:成功连接"</span>).arg(ip).arg(port);</span><br><span class="line">      ui-&gt;textEditRead-&gt;setText(temp);<span class="comment">//显示到只读窗口</span></span><br><span class="line"></span><br><span class="line">      <span class="comment">//接收数据</span></span><br><span class="line">      connect(tcpSocket,&amp;QTcpSocket::readyRead,</span><br><span class="line">              [=]()&#123;</span><br><span class="line">          <span class="comment">//从通信套接字中取出内容</span></span><br><span class="line">          QByteArray <span class="built_in">array</span>= tcpSocket-&gt;readAll();</span><br><span class="line">          ui-&gt;textEditRead-&gt;append(<span class="built_in">array</span>);</span><br><span class="line">      &#125;);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>发送消息（文本）按钮和关闭连接按钮，分别右击转到槽。添加代码</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">void</span> ServerWidget::on_buttonsend_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(tcpSocket==<span class="literal">NULL</span>)&#123;<span class="comment">//有套接字连接的情况下，才能进行此操作</span></span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取write编辑区内容</span></span><br><span class="line">    QString str=ui-&gt;textEditWrite-&gt;toPlainText();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给客服端发送数据，使用tcpSocket套接字</span></span><br><span class="line">    tcpSocket-&gt;write(str.toUtf8().data());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ServerWidget::on_buttonclose_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(tcpSocket==<span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//主动和客户端断开连接</span></span><br><span class="line">    tcpSocket-&gt;disconnectFromHost();<span class="comment">//从服务器取消这个连接到它的服务器</span></span><br><span class="line">    tcpSocket-&gt;close();</span><br><span class="line">    tcpSocket=<span class="literal">NULL</span>;<span class="comment">//断开连接后，通信套接字里面就没有内容了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p>1.右击项目，添加c++class类，类名为clientwidget。设计ui界面如生成结果。<br>2.在clientwidget.h头文件中添加代码,通信套接字头文件和对象。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTcpSocket&gt; //通信套接字</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    QTcpSocket *tcpsocket;<span class="comment">//通信套接字</span></span><br></pre></td></tr></table></figure>
+<p>3.在clientwidget.cpp文件构造函数中添加代码,</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">setWindowTitle(<span class="string">"客户端"</span>);</span><br><span class="line"></span><br><span class="line">tcpsocket=<span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//分配空间，指定父对象</span></span><br><span class="line">tcpsocket=<span class="keyword">new</span> QTcpSocket(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//连接到服务器就会触发connected转到槽</span></span><br><span class="line">connect(tcpsocket,&amp;QTcpSocket::connected,</span><br><span class="line">        [=]()&#123;</span><br><span class="line">            ui-&gt;textEditRead-&gt;setText(<span class="string">"成功和服务器建立好连接"</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">connect(tcpsocket,&amp;QTcpSocket::readyRead,</span><br><span class="line">        [=]()&#123;</span><br><span class="line">            <span class="comment">//获取对方发送的数据</span></span><br><span class="line">    QByteArray <span class="built_in">array</span>=tcpsocket-&gt;readAll();</span><br><span class="line">    <span class="comment">//显示到read编辑框中</span></span><br><span class="line">    ui-&gt;textEditRead-&gt;append(<span class="built_in">array</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>三个按钮分别右击转到槽</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QHostAddress&gt;//之后的操作要添加此头文件</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClientWidget::on_bottonSend_clicked()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//获取write编辑框内容</span></span><br><span class="line">    QString str=ui-&gt;textEditWrite-&gt;toPlainText();</span><br><span class="line">    <span class="comment">//发送数据</span></span><br><span class="line">    tcpsocket-&gt;write(str.toUtf8().data());</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClientWidget::on_buttonConnect_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//从输入行编辑器获取服务器的ip和端口</span></span><br><span class="line">    QString ip=ui-&gt;lineEditIp-&gt;text();</span><br><span class="line">    qint16 port=ui-&gt;lineEditPort-&gt;text().toInt();<span class="comment">//qint16代表16位的无符号整形。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//主动和服务器建立连接</span></span><br><span class="line">    tcpsocket-&gt;connectToHost(QHostAddress(ip),port);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClientWidget::on_bottonClose_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//主动和对方断开连接</span></span><br><span class="line">    tcpsocket-&gt;disconnectFromHost();</span><br><span class="line">    tcpsocket-&gt;close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>  UDP（User Datagram Protocol即用户数据报协议）是一个轻量级的，不可靠的，面向数据报的无连接协议。就像我们现在使用的QQ，其聊天时就是使用UDP协议进行消息发送的。像QQ那样，当有很多用户，发送的大部分都是短消息，要求能及时响应，并且对安全性要求不是很高的情况下使用UDP协议。即使偶尔丢失一两个数据包，也不会对接收结果产生太大影响。</p>
+<p>   在Qt中提供了QUdpSocket 类来进行UDP数据报（datagrams）的发送(writeDatagram)和接收(readDatagram)。<br> 先来看一下UDP通信过程<br><img src="https://ananzhusen.github.io/images/UDP_imag.png" alt="udp通信原理图"></p>
+<p>现在我们来创造下面如图所示的一个服务器：<br><img src="https://ananzhusen.github.io/images/udp_connect.png" alt="udp运行结果"><br>新建项目，选择Qt Widgets应用，项目名为udpsocket,类名为Widget。</p>
+<ol>
+<li>先根据上图设计界面</li>
+<li>在头文件中添加通信套接字声明，再定义一个对象</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QUdpSocket&gt;</span></span></span><br><span class="line"></span><br><span class="line">QUdpSocket *udpsocket;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>分配空间和绑定端口,连接通信套接字自动触发readyRead()信号和处理的槽函数</li>
+</ol>
+<p>先在头文件声明公有槽函数：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dealMag</span><span class="params">()</span></span>;<span class="comment">//槽函数，处理对方发送过来的信号。</span></span><br></pre></td></tr></table></figure></p>
+<p>在构造函数添加：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">Widget::Widget(QWidget *parent) :</span><br><span class="line">    QWidget(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::Widget)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    setWindowTitle(<span class="string">"服务端口为：8888"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分配空间，指定父对象</span></span><br><span class="line">    udpsocket= <span class="keyword">new</span> QUdpSocket(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//绑定端口</span></span><br><span class="line">    udpsocket-&gt;bind(<span class="number">8888</span>);</span><br><span class="line">    <span class="comment">//udpsocket-&gt;bind(QHostAddress::AnyIPv4,8888);</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//加入某个组播</span></span><br><span class="line">    <span class="comment">//组播地址是D类地址</span></span><br><span class="line">    <span class="comment">//udpsocket-&gt;joinMulticastGroup(QHostAddress("244.0.0.2"));</span></span><br><span class="line">    <span class="comment">//udpsocket-&gt;leaveMulticastGroup(1);//退出组播</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//当对方成功发送数据过来</span></span><br><span class="line">    <span class="comment">//自动触发readyRead()信号</span></span><br><span class="line">    connect(udpsocket,&amp;QUdpSocket::readyRead,<span class="keyword">this</span>,&amp;Widget::dealMag);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> Widget::dealMag()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//读取对方发送的内容</span></span><br><span class="line">    <span class="keyword">char</span> buf[<span class="number">1024</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    QHostAddress clientAddr; <span class="comment">//对方地址</span></span><br><span class="line">    quint16 clientPort;  <span class="comment">//对方端口</span></span><br><span class="line">    qint64 len=udpsocket-&gt;readDatagram(buf,<span class="keyword">sizeof</span>(buf),&amp;clientAddr,&amp;clientPort);</span><br><span class="line">    <span class="keyword">if</span>(len&gt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//接收内容格式化</span></span><br><span class="line">        QString str = QString(<span class="string">"[%1:%2] %3"</span>)</span><br><span class="line">                .arg(clientAddr.toString())</span><br><span class="line">                .arg(clientPort)</span><br><span class="line">                .arg(buf);</span><br><span class="line">        ui-&gt;textEdit-&gt;setText(str);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li>两个按钮转到槽</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QHostAddress&gt;//记得添加这个头文件</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Widget::on_bottonSend_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取对方ip和端口</span></span><br><span class="line">    QString ip=ui-&gt;lineEditIP-&gt;text();</span><br><span class="line">    qint16 port=ui-&gt;lineEditPort-&gt;text().toInt();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//获取编辑区数据</span></span><br><span class="line">    QString str=ui-&gt;textEdit-&gt;toPlainText();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给指定的ip发送数据</span></span><br><span class="line">    udpsocket-&gt;writeDatagram(str.toUtf8(),QHostAddress(ip),port);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Widget::on_bottonClose_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//主动和对方断开连接</span></span><br><span class="line">    udpsocket-&gt;disconnectFromHost();</span><br><span class="line">    udpsocket-&gt;close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>根据以上方法就可以创建很多服务端（客户端），通过绑定的端口就可以相互通信了。</li>
+</ol>
+<h2 id="UDP组播问题"><a href="#UDP组播问题" class="headerlink" title="UDP组播问题"></a>UDP组播问题</h2><p>  因为在实际项目中，用户有N个电脑预览实时视频，如果同时有N多个终端去连接服务器，服务器的压力发送数据带宽的压力很大，所以给提出采用组播的方式去解决此类的问题。就像QQ群一样，限定人数，避免广播风暴。组播的原理大致就是服务器往某一组播地址和端口发数据，之后客户端从指定的组播地址和端口去取数据，好处就是减轻了服务器发送的压力</p>
+<p>  开启多个服务器，用客户端发送数据，所有服务器端(复制的过程)都会收到客户端发送的数据。</p>
+<p>组播实现在上个例子代码中注释部分有，需要<strong>注意</strong>：</p>
+<ul>
+<li>发送端既可以加入组播，也可以不加入组播；</li>
+</ul>
+<p>-吧服务端绑定的ip地址必须是ipv4地址；</p>
+<ul>
+<li>组播地址必须是D类地址</li>
+</ul>
+<h2 id="TCP传输文件"><a href="#TCP传输文件" class="headerlink" title="TCP传输文件"></a>TCP传输文件</h2><p>  先来看过传输文件程图：<br><img src="https://ananzhusen.github.io/images/tcp_file.png" alt="TCP传输文件运行结果图"><br>  运行结果：<br><img src="https://ananzhusen.github.io/images/tcp_sendfile.png" alt="TCP传输文件运行结果图"></p>
+<p>首先看到运行结果如上图所示<br>新建项目，选择Qt Widgets应用，项目名为tcpfile,类名为ServerWidget。</p>
+<h3 id="服务端-1"><a href="#服务端-1" class="headerlink" title="服务端"></a>服务端</h3><ol>
+<li>根据运行结果设计界面.</li>
+<li>ServerWidget.h</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> SERVERWIDGET_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SERVERWIDGET_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QWidget&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTcpServer&gt;//监听套接字</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTcpSocket&gt;//通信套接字</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QFile&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTimer&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Ui &#123;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ServerWidget</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ServerWidget</span> :</span> <span class="keyword">public</span> QWidget</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">ServerWidget</span><span class="params">(QWidget *parent = <span class="number">0</span>)</span></span>;</span><br><span class="line">    ~ServerWidget();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sendData</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">on_buttonfile_clicked</span><span class="params">()</span></span>;<span class="comment">//这是转到槽自动添加的</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">on_buttonsend_clicked</span><span class="params">()</span></span>;<span class="comment">//这是转到槽自动添加的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Ui::ServerWidget *ui;</span><br><span class="line">    QTcpServer *tcpserver;<span class="comment">//通信套接字和</span></span><br><span class="line">    QTcpSocket *tcpsocket;<span class="comment">//监听套接字</span></span><br><span class="line"></span><br><span class="line">    QFile file;<span class="comment">//文件对象</span></span><br><span class="line">    QString filename;<span class="comment">//文件名字</span></span><br><span class="line">    qint64 filesize;<span class="comment">//文件大小</span></span><br><span class="line">    qint64 sendsize;<span class="comment">//已经发送文件大小</span></span><br><span class="line">    QTimer timer;<span class="comment">//定时器</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// SERVERWIDGET_H</span></span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li><p>ServerWidget.cpp中添加代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"serverwidget.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_serverwidget.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QFileDialog&gt;//文件对话框</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QFileInfo&gt;</span></span></span><br><span class="line"></span><br><span class="line">ServerWidget::ServerWidget(QWidget *parent) :</span><br><span class="line">    QWidget(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::ServerWidget)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    setWindowTitle(<span class="string">"服务器端口:8888"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//分配空间</span></span><br><span class="line">    tcpserver = <span class="keyword">new</span> QTcpServer(<span class="keyword">this</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//监听</span></span><br><span class="line">    tcpserver-&gt;listen(QHostAddress::Any,<span class="number">8888</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//没建立连接前是不能对进行操作的</span></span><br><span class="line">    ui-&gt;buttonfile-&gt;setEnabled(<span class="literal">false</span>);</span><br><span class="line">    ui-&gt;buttonsend-&gt;setEnabled(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//自动触发newconnection</span></span><br><span class="line">    connect(tcpserver,&amp;QTcpServer::newConnection,</span><br><span class="line">    [=]()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//取出建立好的连接套接字,获取ip和端口</span></span><br><span class="line">        tcpsocket = tcpserver-&gt;nextPendingConnection();</span><br><span class="line">        QString ip = tcpsocket-&gt;peerAddress().toString();</span><br><span class="line">        quint16 port = tcpsocket-&gt;peerPort();<span class="comment">//无符号的</span></span><br><span class="line">        <span class="comment">//格式化并显示在文本编辑框中</span></span><br><span class="line">        QString str = QString(<span class="string">"[%1；%2] 连接成功！"</span>).arg(ip).arg(port);</span><br><span class="line">        ui-&gt;textEdit-&gt;setText(str);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//连接成功后，才能发送文件</span></span><br><span class="line">        ui-&gt;buttonfile-&gt;setEnabled(<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">       &#125;);</span><br><span class="line">     connect(&amp;timer,&amp;QTimer::timeout,</span><br><span class="line">                [=]()</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//关闭定时器</span></span><br><span class="line">            timer.stop();</span><br><span class="line"></span><br><span class="line">            <span class="comment">//发送文件</span></span><br><span class="line">            sendData();</span><br><span class="line">        &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ServerWidget::sendData()</span><br><span class="line">&#123;</span><br><span class="line">    qint64 len=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">do</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//每次发送数据的大小</span></span><br><span class="line">        <span class="keyword">char</span> buf[<span class="number">4</span>*<span class="number">1024</span>]=&#123;<span class="number">0</span>&#125;;<span class="comment">//每次发4k</span></span><br><span class="line">        len=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//往文件中读数据</span></span><br><span class="line">        len = file.read(buf,<span class="keyword">sizeof</span>(buf));</span><br><span class="line">        <span class="comment">//发送数据，读多少发多少</span></span><br><span class="line">        len = tcpsocket-&gt;write(buf,len);<span class="comment">//数据和最大大小</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//发送数据需要累加</span></span><br><span class="line">        sendsize += len;</span><br><span class="line">    &#125;<span class="keyword">while</span>(len &gt; <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//是否文件发送完毕</span></span><br><span class="line">    <span class="keyword">if</span>(sendsize == filesize)</span><br><span class="line">    &#123;</span><br><span class="line">        ui-&gt;textEdit-&gt;append(<span class="string">"文件发送完毕"</span>);</span><br><span class="line"></span><br><span class="line">        file.close();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//把客户端断开</span></span><br><span class="line">        tcpsocket-&gt;disconnectFromHost();</span><br><span class="line">        tcpsocket-&gt;close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>按钮转到槽函数</p>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> ServerWidget::on_buttonfile_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取打开文件路径</span></span><br><span class="line">    QString filePath = QFileDialog::getOpenFileName(<span class="keyword">this</span>,<span class="string">"open"</span>,<span class="string">"../"</span>);</span><br><span class="line">    <span class="keyword">if</span>(<span class="literal">false</span> == filePath.isEmpty())<span class="comment">//选择路径有效</span></span><br><span class="line">    &#123;</span><br><span class="line">        filename.clear();</span><br><span class="line">        filesize = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//通过路径获取文件信息（文件名和文件大小）</span></span><br><span class="line">        <span class="function">QFileInfo <span class="title">info</span><span class="params">(filePath)</span></span>;<span class="comment">//构造对象</span></span><br><span class="line">        filename = info.fileName();</span><br><span class="line">        filesize = info.size();<span class="comment">//qint64</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//已经发送大小还为0</span></span><br><span class="line">        sendsize=<span class="number">0</span>;</span><br><span class="line">        <span class="comment">//只读方式打开文件</span></span><br><span class="line">        <span class="comment">//指定文件名字</span></span><br><span class="line">        file.setFileName(filePath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//打开文件</span></span><br><span class="line">        <span class="keyword">bool</span> isok = file.open(QIODevice::ReadOnly);</span><br><span class="line">        <span class="keyword">if</span>(<span class="literal">false</span> == isok)</span><br><span class="line">        &#123;</span><br><span class="line">            qDebug()&lt;&lt;<span class="string">"只读方式打开文件失败 98"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//提示打开的文件路径</span></span><br><span class="line">        ui-&gt;textEdit-&gt;append(filePath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//打开文件后，按钮的状态</span></span><br><span class="line">        ui-&gt;buttonfile-&gt;setEnabled(<span class="literal">false</span>);</span><br><span class="line">        ui-&gt;buttonsend-&gt;setEnabled(<span class="literal">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        qDebug()&lt;&lt;<span class="string">"选择文件路径出错"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ServerWidget::on_buttonsend_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//先发送文件头信息  文件名##文件大小</span></span><br><span class="line">    QString head = QString(<span class="string">"%1##%2"</span>).arg(filename).arg(filesize);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//发送头部信息</span></span><br><span class="line">    qint64 len = tcpsocket-&gt;write(head.toUtf8());</span><br><span class="line">    <span class="keyword">if</span>(len &gt; <span class="number">0</span>)<span class="comment">//头部信息发送成功</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//发送真正的文件信息</span></span><br><span class="line">        <span class="comment">//防止tcp黏包文件</span></span><br><span class="line">        <span class="comment">//需要通过定时器</span></span><br><span class="line">        timer.start(<span class="number">20</span>);<span class="comment">//定时器开始就会自动触发timeout信号</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        qDebug()&lt;&lt;<span class="string">"头部信息发送失败"</span>;</span><br><span class="line">        file.close();</span><br><span class="line">        ui-&gt;buttonfile-&gt;setEnabled(<span class="literal">true</span>);</span><br><span class="line">        ui-&gt;buttonsend-&gt;setEnabled(<span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="客户端-1"><a href="#客户端-1" class="headerlink" title="客户端"></a>客户端</h3><ol>
+<li>右击添加，class c++新文件，类名为clientwidget.设计界面</li>
+<li>clientwidget.h中添加代码</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QFile&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QTimer&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> Ui &#123;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ServerWidget</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ServerWidget</span> :</span> <span class="keyword">public</span> QWidget</span><br><span class="line">&#123;</span><br><span class="line">    Q_OBJECT</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">ServerWidget</span><span class="params">(QWidget *parent = <span class="number">0</span>)</span></span>;</span><br><span class="line">    ~ServerWidget();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">sendData</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> slots:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">on_buttonfile_clicked</span><span class="params">()</span></span>;<span class="comment">//这是转到槽自动添加的</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">on_buttonsend_clicked</span><span class="params">()</span></span>;<span class="comment">//这是转到槽自动添加的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Ui::ServerWidget *ui;</span><br><span class="line">    QTcpServer *tcpserver;<span class="comment">//通信套接字和</span></span><br><span class="line">    QTcpSocket *tcpsocket;<span class="comment">//监听套接字</span></span><br><span class="line"></span><br><span class="line">    QFile file;<span class="comment">//文件对象</span></span><br><span class="line">    QString filename;<span class="comment">//文件名字</span></span><br><span class="line">    qint64 filesize;<span class="comment">//文件大小</span></span><br><span class="line">    qint64 sendsize;<span class="comment">//已经发送文件大小</span></span><br><span class="line">    QTimer timer;<span class="comment">//定时器</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// SERVERWIDGET_H</span></span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>clientwidget.cpp中添加代码</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"clientwidget.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ui_clientwidget.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QHostAddress&gt;</span></span></span><br><span class="line"></span><br><span class="line">clientWidget::clientWidget(QWidget *parent) :</span><br><span class="line">    QWidget(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::clientWidget)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    setWindowTitle(<span class="string">"客户端"</span>);</span><br><span class="line"></span><br><span class="line">    tcpsocket = <span class="keyword">new</span> QTcpSocket(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//ui-&gt;progressBar-&gt;setValue(0);//当前值</span></span><br><span class="line"></span><br><span class="line">    isstart = <span class="literal">true</span>;<span class="comment">//用来判断接受的是不是头部</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//连接成功准备接收文件</span></span><br><span class="line">    connect(tcpsocket,&amp;QTcpSocket::readyRead,</span><br><span class="line">            [=]()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//取出接受的内容</span></span><br><span class="line">        QByteArray buf = tcpsocket-&gt;readAll();</span><br><span class="line">        <span class="keyword">if</span>(<span class="literal">true</span> == isstart)<span class="comment">//第一次发的头，接收头</span></span><br><span class="line">        &#123;</span><br><span class="line">            isstart = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//取出接收的内容(拆包)</span></span><br><span class="line">            filename = QString(buf).section(<span class="string">"##"</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">            filesize = QString(buf).section(<span class="string">"##"</span>,<span class="number">1</span>,<span class="number">1</span>).toInt();</span><br><span class="line">            <span class="comment">//开始收到的文件大小为0</span></span><br><span class="line">            receivesize=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//打开文件</span></span><br><span class="line">            file.setFileName(filename);</span><br><span class="line">            <span class="keyword">bool</span> isok=file.open(QIODevice::WriteOnly);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(<span class="literal">false</span> == isok)</span><br><span class="line">            &#123;</span><br><span class="line">                qDebug()&lt;&lt;<span class="string">"writeonly error"</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">else</span><span class="comment">//取出文件数据</span></span><br><span class="line">         &#123;</span><br><span class="line">                qint64 len = file.write(buf);</span><br><span class="line">                receivesize += len;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(receivesize==filesize)<span class="comment">//文件接受完成</span></span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//给服务器发送接收完成信息</span></span><br><span class="line">                    tcpsocket-&gt;write(<span class="string">"file done"</span>);</span><br><span class="line"></span><br><span class="line">                    QMessageBox::information(<span class="keyword">this</span>,<span class="string">"完成"</span>,<span class="string">"文件接受完成！"</span>);</span><br><span class="line"></span><br><span class="line">                    tcpsocket-&gt;disconnectFromHost();<span class="comment">//断开连接</span></span><br><span class="line">                    tcpsocket-&gt;close();</span><br><span class="line">                &#125;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>按钮转到槽</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> clientWidget::on_bottonconnect_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取服务器的ip和端口</span></span><br><span class="line">    QString ip=ui-&gt;lineEditip-&gt;text();</span><br><span class="line">    quint16 port = ui-&gt;lineEditport-&gt;text().toInt();</span><br><span class="line"></span><br><span class="line">    tcpsocket-&gt;connectToHost(QHostAddress(ip),port);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>主函数添加为：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"serverwidget.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"clientwidget.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">    ServerWidget w;</span><br><span class="line">    w.show();</span><br><span class="line"></span><br><span class="line">    clientWidget w2;</span><br><span class="line">    w2.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>  在学完上面的四个知识后，我写了一个实现两个pc机之间互相通信的程序，一个简单的聊天室，运行结果如下图，另一端改变绑定端口即可，使用的UDP协议，可以实现发文字消息和传输文件（文件对方接收后可以直接创建，但只能写一部分进去，我一直以为是文件写入有问题，后来才找出是我发文件的这一端发送文件大小小于实际文件大小，然后拖着拖着就难得去改了（优秀）），里面最大的问题是判断你接受的是文件还是文字问题，然后我用了分片（section）加关键字（file 和 text）区分。之后我会把我的代码上传到码云，这里不再说明过程。</p>
+<p><img src="https://ananzhusen.github.io/images/chat_now.png" alt="TCP传输文件运行结果图"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://Anzusen.com/2019/05/06/Qt实战（1）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1953,193 +2227,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Anzusen.com/2019/03/23/第一篇博客/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ananzhusen">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/touxiang.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anzhusen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/23/第一篇博客/" itemprop="url">第一篇博客：在Github上搭建Hexo博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-23T14:59:18+08:00">
-                2019-03-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/安装链接/" itemprop="url" rel="index">
-                    <span itemprop="name">安装链接</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/23/第一篇博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/23/第一篇博客/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  166
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="具体实现看下面的链接"><a href="#具体实现看下面的链接" class="headerlink" title="具体实现看下面的链接"></a>具体实现看下面的链接</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/23/第一篇博客/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2192,7 +2279,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
