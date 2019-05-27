@@ -87,23 +87,23 @@
 <meta property="og:site_name" content="Anzhusen">
 <meta property="og:description" content="布局管理Qt主要提供了QLayout类及其子类作为布局管理器。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/QLayout_class_tree.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/text_buju.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/layout_shuxing.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/zhonghe_buju.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/QSizePolicy_position.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/QSizePolicy_value.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/formLayout_value.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/LayoutSize_value.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/textEdit_show.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/textEdit_hide.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/splitter_result.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/dingweiqi.png">
-<meta property="og:updated_time" content="2019-05-03T13:02:21.579Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/QLayout_class_tree.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/text_buju.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/layout_shuxing.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/zhonghe_buju.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/QSizePolicy_position.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/QSizePolicy_value.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/formLayout_value.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/LayoutSize_value.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/textEdit_show.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/textEdit_hide.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/splitter_result.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/dingweiqi.png">
+<meta property="og:updated_time" content="2019-05-27T12:47:48.099Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="QtCreator学习（2）">
 <meta name="twitter:description" content="布局管理Qt主要提供了QLayout类及其子类作为布局管理器。">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/QLayout_class_tree.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/QLayout_class_tree.png">
 
 
 
@@ -434,7 +434,7 @@
       
 
       
-        <h3 id="布局管理"><a href="#布局管理" class="headerlink" title="布局管理"></a>布局管理</h3><p>Qt主要提供了QLayout类及其子类作为布局管理器。<br><a id="more"></a><br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/QLayout_class_tree.png" alt="QLayout类关系图"></p>
+        <h3 id="布局管理"><a href="#布局管理" class="headerlink" title="布局管理"></a>布局管理</h3><p>Qt主要提供了QLayout类及其子类作为布局管理器。<br><a id="more"></a><br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/QLayout_class_tree.png" alt="QLayout类关系图"></p>
 <h4 id="布局管理系统"><a href="#布局管理系统" class="headerlink" title="布局管理系统"></a>布局管理系统</h4><p>一旦一个部件上设置了布局管理器，那么它会完成以下几种任务:</p>
 <ol>
 <li>定位子部件;</li>
@@ -447,16 +447,16 @@
 <li>移除一个子 部件。</li>
 </ul>
 <h5 id="布局管理器"><a href="#布局管理器" class="headerlink" title="布局管理器"></a>布局管理器</h5><p>  QLayout类是布局管理器的基类,是一个抽象基类,継承自QObject 和QLayoutItem类, Qlayoutltem类提供了一个供Qlayout操作的抽象項目。Qlayout 和QLayoutItem都是在设计自己的布局管理器吋オ使用的,一般只需要使用QLayout的几个子类即可,它们分別是QBoxlayout(基本布局管理器)、QGridLayout(柵格布局管理器)、QFormLayout(窗体布局管理器)和QStackedlayout(桟布局管理器)。这里的;QStackedlayout与（1）中述的桟部件QStackedWidget用法相同,不再螯述。<br>  打开Qt Creator ,新建Qt Widgets应用,项目名称为mylayout,基类选择QWidget,类名设为MyWidget。完成后打开mywidget. ui文件,在设计模式中向界面上拖入一个字体选择框Font Combo Box和一个文本编辑器Text Edit部件。然后单击主界面并按下Ctrl+L快捷键,或者单击设计器上部边栏中的 “目” 图标来对主界面进行垂直布局管理。也可以在主界面上右击，在弹出的级联菜单中选择“布局→垂直布局”。这样便设置了顶层布局管理器(因为是对整个窗口设置的布局管理器，所以叫顶层布局管理器),可以看到两个部件已经填满了整个界面。这时运行程序，然后拉伸窗口,两个部件会随着窗口的大小变化而变化,运行结果如图4所示。这就是布局管理器的作用。</p>
-<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/text_buju.png" alt="布局管理器随窗口大小变化而变化"></p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/text_buju.png" alt="布局管理器随窗口大小变化而变化"></p>
 <h6 id="基本布局管理器"><a href="#基本布局管理器" class="headerlink" title="基本布局管理器"></a>基本布局管理器</h6><p>  基本布局管理器QBoxLayout类可以使子部件在水平方向或者垂直方向排成一列,它将所有的空间分成一行盒子，然后将每个部件放人一个盒子中。它有两个子类QHBoxLayout水平布局管理器和QVBoxLayout垂直布局管理器,编程中经常用到。再回到设计模式中看看布局管理器的属性。先单击主界面,查看它的属性栏,最后面的部分是其使用的布局管理器的属性,如下表所列。</p>
-<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/layout_shuxing.png" alt="布局管理器的属性"><br>  下面打破已有的布局,使用代码实现水平布局。在界面上右击，然后在弹出的级联菜单中选择“打破布局”,或者单击设计器上方边栏中的打破布局图标。在MyWidget类的构造函数中添加如下代码:</p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/layout_shuxing.png" alt="布局管理器的属性"><br>  下面打破已有的布局,使用代码实现水平布局。在界面上右击，然后在弹出的级联菜单中选择“打破布局”,或者单击设计器上方边栏中的打破布局图标。在MyWidget类的构造函数中添加如下代码:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt; QHBoxLayout&gt;</span></span></span><br><span class="line"></span><br><span class="line">    QHBoxLayout *layout=<span class="keyword">new</span> QHBoxLayout;   <span class="comment">//新建布局管理器</span></span><br><span class="line">    layout-&gt;addWidget(ui-&gt;fontComboBox);   <span class="comment">//向布局管理器中添加部件</span></span><br><span class="line">    layout-&gt;addWidget(ui-&gt;textEdit);       </span><br><span class="line">    layout-&gt;setSpacing(<span class="number">50</span>);                <span class="comment">//设置部件间的间隔</span></span><br><span class="line">    layout-&gt;setContentsMargins(<span class="number">0</span>,<span class="number">0</span>,<span class="number">50</span>,<span class="number">100</span>);<span class="comment">//设置布局管理器到边界的距离</span></span><br><span class="line">                                           <span class="comment">//4个参数顺序是左上右下</span></span><br><span class="line">    setLayout(layout);                     <span class="comment">//将这个布局设置为MyWidget的布局</span></span><br></pre></td></tr></table></figure>
 <p><strong>说明：</strong>除了使用addWidget()函数向布局管理器的末尾添加部件外，还可以使用insertWidget()函数向任意位置添加部件。</p>
 <h6 id="栅格布局管理器（QGridLayout）"><a href="#栅格布局管理器（QGridLayout）" class="headerlink" title="栅格布局管理器（QGridLayout）"></a>栅格布局管理器（QGridLayout）</h6><p>  栅格布局管理器QGridLayout类使部件在网格中进行布局,它将所有的空间分隔成一些行和列,行和列的交叉处形成了单元格,然后将部件放人一个确定的单元格中。先往界面上拖放一个Push Button, 然后在mywidget. cpp中添加头文件,再注释掉前面添加的关于水平布局管理器的代码,添加的如下代码:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span><span class="meta-string">&lt;QGridLayout&gt;</span></span></span><br><span class="line"></span><br><span class="line">   QGridLayout *layout =<span class="keyword">new</span> QGridLayout;</span><br><span class="line">   <span class="comment">//添加部件从0行0列开始占据一行两列</span></span><br><span class="line">   layout-&gt;addWidget(ui-&gt;fontComboBox,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>);</span><br><span class="line">   layout-&gt;addWidget(ui-&gt;pushButton,<span class="number">0</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>);</span><br><span class="line">   layout-&gt;addWidget(ui-&gt;textEdit,<span class="number">1</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line">   setLayout(layout);</span><br></pre></td></tr></table></figure></p>
 <h6 id="窗口布局管理器（QFormLayout）"><a href="#窗口布局管理器（QFormLayout）" class="headerlink" title="窗口布局管理器（QFormLayout）"></a>窗口布局管理器（QFormLayout）</h6><p>  窗体布局管理器QFormLayout类用来管理表单的输人部件以及与它们相关的标签。窗体布局管理器将它的子部件分为两列,左边是一些标签,右边是一些输入部件，比如行编辑器或者数字选择框等。</p>
 <p>  先将前面在MyWidget类的构造函数中自己添加的代码全部注释掉,然后进人设计模式,这里使用另外一种方法来使用布局管理器。从部件栏中找到Form Layout,将其拖人到界面上,然后双击或者在它上面右击并在弹出级联菜单中选择“添加窗体布局行”。在弹出的“添加表单布局行”对话框中填入标签文字“姓名(&amp;N):”,这样下面便自动填写了“标签名称”、“字段类型”和“字段名称”等,并且设置了伙伴关系。这里使用了QLineEdit行编辑器,当然也可以选择其他部件。填写的标签文字中的“(&amp;N)”必须是英语半角的括号,表明它的快捷键是Alt+N。设置伙伴关系表示按下Alt+N时，光标自动跳转到标签后面对应的行编辑器中。单击“确定”键.则会在布局管理器中添加一个标签和一个行编辑器。按照这种方法,再添加3行:性别(&amp;S),使用QCo-moBox;年龄(&amp;A),使用QSpinBox;邮箱(&amp;M),使用QLineEdit。完成后运行程序，可以按下快捷键Alt+N,这样光标就可以定位到“姓名”标签后的行编辑器中。</p>
 <p>   上面添加表单行是在设计器中完成的,其实也可以在代码中使用addRow()函数来完成。</p>
-<h6 id="综合使用布局管理器"><a href="#综合使用布局管理器" class="headerlink" title="综合使用布局管理器"></a>综合使用布局管理器</h6><p>  现在将前面的界面再进行设计:按下Ctrl键的同时选中界面上的字体选择框fontComboBox和按钮pushButton,然后按下Ctrl+H快捷键将它们放人一个水平布局管理器中(其实;也可以从部件栏中拖人一个Horizontal Layout, 然后再将这两个部件放进去，效果是:一样的)。然后再从部件栏中拖入一个Vertical Spacer垂直分隔符,用来在部件间产生间隔,将它放在窗体布局管理器与水平布局管理器之间。最后单击主界面并按下Ctrl+L快捷键,让整个界面处于一个垂直布局管理器中。这时可以在右上角的对象列表中选择分隔符Spacer,然后在属性栏中设置它的高度为100,这时运行程序可以看到,分隔符是不显示的。如图所示：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/zhonghe_buju.png" alt="综合使用布局管理器"></p>
+<h6 id="综合使用布局管理器"><a href="#综合使用布局管理器" class="headerlink" title="综合使用布局管理器"></a>综合使用布局管理器</h6><p>  现在将前面的界面再进行设计:按下Ctrl键的同时选中界面上的字体选择框fontComboBox和按钮pushButton,然后按下Ctrl+H快捷键将它们放人一个水平布局管理器中(其实;也可以从部件栏中拖人一个Horizontal Layout, 然后再将这两个部件放进去，效果是:一样的)。然后再从部件栏中拖入一个Vertical Spacer垂直分隔符,用来在部件间产生间隔,将它放在窗体布局管理器与水平布局管理器之间。最后单击主界面并按下Ctrl+L快捷键,让整个界面处于一个垂直布局管理器中。这时可以在右上角的对象列表中选择分隔符Spacer,然后在属性栏中设置它的高度为100,这时运行程序可以看到,分隔符是不显示的。如图所示：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/zhonghe_buju.png" alt="综合使用布局管理器"></p>
 <h5 id="设置部件大小"><a href="#设置部件大小" class="headerlink" title="设置部件大小"></a>设置部件大小</h5><p>   讲解之前要先了解两个概念:大小提示(sizeHint)和最小大小提示(minimumSize-Hint)。凡是继承自QWidget的类都有这两个属性：</p>
 <ul>
 <li>sizeHint属性保存了部件的建议大小,对于不同的部件,默认拥有不同的sizeHint;</li>
@@ -468,7 +468,7 @@
 <ol>
 <li>大小策略(sizePolicy)属性，这个属性保存了部件的默认布局行为,在水平和垂直两个方向分别起作用,控制着部件在布局管      下面再来看一下大小策略(sizePolicy)属性,它也是QWidget类的属性。这个属性保存了部件的默认布局行为,在水平和垂直两个方向分别起作用,控制着部件在布局管理器中的大小变化行为。</li>
 </ol>
-<p>sizePolicy在Qt Creator里的位置及取值：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/QSizePolicy_position.png" alt="Qtcreator里大小策略的位置"><br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/QSizePolicy_value.png" alt="QSizePolicy大小策略的取值"></p>
+<p>sizePolicy在Qt Creator里的位置及取值：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/QSizePolicy_position.png" alt="Qtcreator里大小策略的位置"><br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/QSizePolicy_value.png" alt="QSizePolicy大小策略的取值"></p>
 <ol start="2">
 <li>高度与宽度属性是现在界面的大小;下面的sizePolicy属性可以设置大小策略以及伸缩因子;minimumSize属性用来设置最小值 ;maximumSize属性设置最大值;</li>
 <li>sizeIncrement属性和baseSize属性是设置窗口改变大小的，一般不用设置。</li>
@@ -480,18 +480,18 @@
 <li><p>窗口布局管理器的属性如表所示：</p>
 </li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/formLayout_value.png" alt="窗口布局属性"></p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/formLayout_value.png" alt="窗口布局属性"></p>
 <ol start="3">
 <li>LayoutSizeConstraint属它是用来约束窗口大小的，也就是说,这个只对顶级布局管理器有用,因为它只对窗口有用,对其他子部件没有效果。</li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/LayoutSize_value.png" alt="约束窗口大小"></p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/LayoutSize_value.png" alt="约束窗口大小"></p>
 <h5 id="可扩展窗口"><a href="#可扩展窗口" class="headerlink" title="可扩展窗口"></a>可扩展窗口</h5><p>  一个窗口可 能有很多选项是扩充的,只有在必要的时候才显示出来,这时就可以使用一个按钮来隐藏或者显示多余的内容,就是所谓的可扩展窗口。要实现可扩展窗口，就要得力于布局管理器的特性,那就是当子部件隐藏时，布局管理器自动缩小，当子部件重新显示时,布局管理器再次放大。下面看一个具体的例子。</p>
 <p>  依然在前面的程序中进行更改。首先将界面上的pushButton显示文本更改为“显示可扩展窗口”,并在其属性栏选中checkable选项。然后转到它的toggled( bool)信号的槽,更改如下:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> MyWidget::on_pushButton_toggled(<span class="keyword">bool</span> checked)<span class="comment">//隐藏窗口按钮</span></span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;textEdit-&gt;setVisible(checked);<span class="comment">//设置文本编辑器的扩展和隐藏true or false</span></span><br><span class="line">    <span class="keyword">if</span>(checked)ui-&gt;pushButton-&gt;setText(tr(<span class="string">"隐藏可扩展的窗口"</span>));</span><br><span class="line">    <span class="keyword">else</span> ui-&gt;pushButton-&gt;setText(tr(<span class="string">"显示可扩展的窗口"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>  这里使用按钮的按下与否两种状态来设置文本编辑器是否显示,并且相应地更改按钮的文本。为了让文本编辑器在一开始是隐藏的,还要在MyWidget类的构造函数中添加一行代码:<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ui -&gt;textEdit -&gt;hide();<span class="number">1</span>让文本编辑器隐藏,也可以使用setVisible( <span class="literal">false</span>)函数</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/textEdit_show.png" alt="显示文本编辑器"><br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/textEdit_hide.png" alt="隐藏文本显示器"></p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/textEdit_show.png" alt="显示文本编辑器"><br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/textEdit_hide.png" alt="隐藏文本显示器"></p>
 <h5 id="分裂器（QSplitter）"><a href="#分裂器（QSplitter）" class="headerlink" title="分裂器（QSplitter）"></a>分裂器（QSplitter）</h5><p>  分裂器QSplitter类提供了一个分裂器部件。和QBoxLayout类似，可以完成布局管理器的功能,但是包含在它里面的部件,默认是可以随着分裂器的大小变化而变化的。比如一个按钮放在布局管理器中,它的垂直方向默认是不会被拉伸的,但是放到分裂器中就可以被拉伸。还有一点不同就是,布局管理器继承自QObject类,而分裂器却是继承自QFrame类,QFrame类又继承自QWidget类,也就是说，分裂器拥有QWid-get类的特性,它是可见的,而且可以像QFrame一样设置边框。</p>
-<p>  新建Qt Widgets应用,项目名称为mysplitter,基类选择QWidget,类名设为MyWidget。建好项目后打开mywid-get, ui文件,然后往界面上拖人4个Push Button,同时选中这4个按钮,右击并在弹出的级联菜单中选择“布局→使用分裂器水平布局”,将这4个按钮放到一个分裂器中。将分裂器拉大点,并在属性栏中设置其frameShape为Box, frameShadow为Raised,lineWidth为5。运行程序,效果如图所示：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/splitter_result.png" alt="分裂器运行结果"></p>
+<p>  新建Qt Widgets应用,项目名称为mysplitter,基类选择QWidget,类名设为MyWidget。建好项目后打开mywid-get, ui文件,然后往界面上拖人4个Push Button,同时选中这4个按钮,右击并在弹出的级联菜单中选择“布局→使用分裂器水平布局”,将这4个按钮放到一个分裂器中。将分裂器拉大点,并在属性栏中设置其frameShape为Box, frameShadow为Raised,lineWidth为5。运行程序,效果如图所示：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/splitter_result.png" alt="分裂器运行结果"></p>
 <h4 id="设置伙伴（buddy）"><a href="#设置伙伴（buddy）" class="headerlink" title="设置伙伴（buddy）"></a>设置伙伴（buddy）</h4><p>  前面讲述窗体布局管理器时提到了设置一个标签和一个部件的伙伴关系。其实，伙伴( buddy)是在QLabel类中提出的一个概念。因为一个标签经常用作一个交互式部件的说明,就像在讲窗体布局管理器时看到的那样，一个lineEdit部件前面有一个标签说明这个lineEdit的作用。为了方便定位,QLabel提供了一个有用的机制,那就是提供了助记符来定位键盘焦点到对应的部件上,而这个部件就叫这个QLabel的伙伴。其中，助记符就是我们所说的加速键。使用英文标签时,在字符串的一一个字母前面添加“&amp;”符号,就可以指定这个标签的加速键是Alt加上这个字母;对于中文,需要在小括号中指定加速键字母,这个前面已经见过多次了。Qt设计器中也提供了伙伴设计模式,下面看一个例子。</p>
 <p>  新建Qt Widgets应用,项目名称为mybuddy,基类选择QWidget,类名设为MyWidget。完成后打开mywidget,ui文件,往界面上拖放4个标签Label, 再在标签后面依次放上PushButton、CheckBox、LineEdit和SpinBox。然后将PushButton前面的标签文本改为“&amp;Button:”, Check-Box前面的标签文本改为“C&amp;heckBox:”,LineEdit前面的标签文本改为“行编辑器(&amp;L):”, SpinBox前面的标签文本改为“数字选择框(&amp;N):”。单击设计器上方边栏中的编辑伙伴图标进入伙伴设计模式,分别将各个标签与它们后面的部件关联起来。然后按下F3键回到正常编辑模式,可以看到所有的&amp;符号都不显示了。<br>  现在运行程序,按下Alt+ B组合键，则可以看到按钮被按下了,而字母下面多了一个横杠,表示这个标签的加速键就是Alt加这个字母。如果要在代码中设置伙伴关系，则只需要使用QLabel的<strong>setBuddy()函数</strong>就可以了。本小节内容可以在帮助索引中通过Qt Designer’s Buddy Editing Mode关键字查看。</p>
 <h4 id="设置Tab键顺序"><a href="#设置Tab键顺序" class="headerlink" title="设置Tab键顺序"></a>设置Tab键顺序</h4><p>  对于一个应用程序,有时总希望使用Tab键将焦点从一个部件移动到下一个部件。在设计模式中,设计器提供了Tab键的设置功能。在前面程序的设计模式中,按下，上方边栏的编辑Tab顺序按钮进人编辑Tab键顺序模式,这时已经显示出了各个部件的Tab键顺序,只需要单击这些数字就可以更改顺序。设置好之后,可以运行一下程序测试效果。需要说明，当程序启动时，焦点会在Tab键顺序为1的部件上。这里进行的设置等价于在MyWidget类的构造函数中使用如下代码:</p>
@@ -499,7 +499,7 @@
 <p>  关于在设计器中设置Tab键顺序,可以在帮助索引中通过Qt Designer’s TabOrder Editing Mode关键字查看。</p>
 <h4 id="Qt-Creator中的定位器"><a href="#Qt-Creator中的定位器" class="headerlink" title="Qt Creator中的定位器"></a>Qt Creator中的定位器</h4><p>  定位器,它位于主界面的左下方。使用定位器可以很方便地打开指定文件、定位到文档的指定行、打开一个特定的帮助文档、进行项目中函数的查找等。更多的功能可以在帮助索引中通过Searching With the Locator关键字查看。</p>
 <p>   定位器中提供了多个过滤器来实现不同的功能,按下<strong>Ctrl+K</strong>快捷键就会在定位器中显示各个过滤器的前缀及其功能，如图所示。使用方法是<strong>“前缀符号+空格+要定位的内容”</strong>。</p>
-<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/tree/master/image/dingweiqi.png" alt="定位器"><br>  在Qt Creator中,按下Ctrl+K快捷键打开定位器,这时输人“18”(英文字母1和一个空格,然后是数字8),按下Enter回车键,就会跳转到编辑模式的当前打开文档的第8行。再次按下Ctrl + K快捷键,输入“? qla” ,这时已经查找到了QLabel, 按下回车键,就会跳转到帮助模式中,并打开QLabel类的帮助文档。</p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/dingweiqi.png" alt="定位器"><br>  在Qt Creator中,按下Ctrl+K快捷键打开定位器,这时输人“18”(英文字母1和一个空格,然后是数字8),按下Enter回车键,就会跳转到编辑模式的当前打开文档的第8行。再次按下Ctrl + K快捷键,输入“? qla” ,这时已经查找到了QLabel, 按下回车键,就会跳转到帮助模式中,并打开QLabel类的帮助文档。</p>
 
       
     </div>
@@ -681,7 +681,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -703,7 +703,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

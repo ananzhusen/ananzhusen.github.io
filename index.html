@@ -282,6 +282,269 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://Anzusen.com/2019/05/26/Qt实战（3）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ananzhusen">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/touxiang.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Anzhusen">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/26/Qt实战（3）/" itemprop="url">Qt实战（3）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-26T14:04:05+08:00">
+                2019-05-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/界面/" itemprop="url" rel="index">
+                    <span itemprop="name">界面</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/26/Qt实战（3）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/Qt实战（3）/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Qt-操作MySql数据库"><a href="#Qt-操作MySql数据库" class="headerlink" title="Qt 操作MySql数据库"></a>Qt 操作MySql数据库</h2><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>问题：Qt连接MySQL的时候提示“QSqlDatabase: QMYSQL driver not loaded”，</p>
+<p>解决办法：</p>
+<ul>
+<li>你的Qt Creator与MySQL位数统一的情况下，从 你的MySQL\lib目录下中将 libmysql.dll 文件复制到C:\Qt\Qt5.6.1\5.6\mingw49_32\bin中。运行程序。</li>
+<li>如果你的Qt Creator与MySQL位数不统一，下载一个位数与你的Qt相同的Mysql,找到里面的 libmysql.dll文件复制到目录下。</li>
+<li>总之，必须保证你拿到libmysql.dll这个文件对应的mysql的位数必须与QT的位数相同。</li>
+</ul>
+<h3 id="数据库基本操作"><a href="#数据库基本操作" class="headerlink" title="数据库基本操作"></a>数据库基本操作</h3><p>对数据库基本操作就是增、删、改、查。</p>
+<ol>
+<li>新建 Qt Widgets 应用， 项目名称为 database， 类名为Mywidget， 基类选择QWidget。</li>
+<li>完成后在 database.pro文件中添加如下代码：</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QT += sql</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>连接数据库，在构造函数中添加以下代码</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlDatabase&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlError&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Widget::Widget(QWidget *parent) :</span><br><span class="line">    QWidget(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::Widget)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    打印QT支持的数据库驱动</span><br><span class="line">    qDebug()&lt;&lt;QSqlDatabase::drivers();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加mysql数据库</span></span><br><span class="line">    QSqlDatabase db = QSqlDatabase::addDatabase(<span class="string">"QMYSQL"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//连接数据库</span></span><br><span class="line">    db.setHostName(<span class="string">"127.0.0.1"</span>);</span><br><span class="line">    db.setUserName(<span class="string">"root"</span>);</span><br><span class="line">    db.setPassword(<span class="string">"an1234"</span>);</span><br><span class="line">    db.setDatabaseName(<span class="string">"test_db"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//打开数据库是否成功</span></span><br><span class="line">    <span class="keyword">if</span>(!db.open())</span><br><span class="line">    &#123;</span><br><span class="line">        QMessageBox::warning(<span class="keyword">this</span>,<span class="string">"错误"</span>,db.lastError().text());</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>QT支持的数据库驱动有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&quot;QSQLITE&quot;, &quot;QMYSQL&quot;, &quot;QMYSQL3&quot;, &quot;QPSQL&quot;, &quot;QPSQL7&quot;)</span><br></pre></td></tr></table></figure></p>
+<ol start="4">
+<li>创建数据表格，继续向后添加代码</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlQuery&gt;//一组数据</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建数据表格</span></span><br><span class="line">    QSqlQuery query;</span><br><span class="line">    query.exec(<span class="string">"create table student(id int primary key auto_increment ,name varchar(255),age int,score int);"</span>);</span><br></pre></td></tr></table></figure>
+<p>此条语句运行一次后要注释，不能多次创建同名的数据表格</p>
+<ol start="4">
+<li>数据库的另一种操作</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line"><span class="comment">//添加mysql数据库  a是连接名，用于区分</span></span><br><span class="line">QSqlDatabase db1 = QSqlDatabase::addDatabase(<span class="string">"QMYSQL"</span>,<span class="string">"a"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//连接数据库</span></span><br><span class="line">db1.setHostName(<span class="string">"127.0.0.1"</span>);</span><br><span class="line">db1.setUserName(<span class="string">"root"</span>);</span><br><span class="line">db1.setPassword(<span class="string">"an1234"</span>);</span><br><span class="line">db1.setDatabaseName(<span class="string">"testdb"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//打开数据库是否成功</span></span><br><span class="line"><span class="keyword">if</span>(!db1.open())</span><br><span class="line">&#123;</span><br><span class="line">    QMessageBox::warning(<span class="keyword">this</span>,<span class="string">"错误"</span>,db.lastError().text());</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">QSqlQuery <span class="title">query1</span><span class="params">(db1)</span></span>;<span class="comment">//有区分时，一定要加上数据库名</span></span><br><span class="line">query1.exec(<span class="string">"create table student(id int primary key auto_increment ,name varchar(255),age int,score int);"</span>);</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>插入(增)</li>
+</ol>
+<p>① 插入一条数据</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//插入数据</span></span><br><span class="line">   QSqlQuery query;</span><br><span class="line">   query.exec(<span class="string">"insert into student (id, name, age, score)values(2,'lucy',22,59);"</span>);</span><br></pre></td></tr></table></figure>
+<p>② 批量插入<br>两种方法：<br>obdc风格</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QVariantList&gt;//放任何类型，列表 </span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//obdc风格插入</span></span><br><span class="line">    <span class="comment">//预处理语句</span></span><br><span class="line">    <span class="comment">//？相当于占位符</span></span><br><span class="line">    query.prepare(<span class="string">"insert into student (name, age, score)values(?,?,?);"</span>);</span><br><span class="line">    <span class="comment">//给字段设置内容</span></span><br><span class="line">    QVariantList namelist;</span><br><span class="line">    namelist &lt;&lt; <span class="string">"xiaoming"</span> &lt;&lt; <span class="string">"xiaohua"</span> &lt;&lt; <span class="string">"xiaoliao"</span>;</span><br><span class="line">    QVariantList agelist;</span><br><span class="line">    agelist &lt;&lt; <span class="number">19</span> &lt;&lt; <span class="number">20</span> &lt;&lt; <span class="number">21</span>;</span><br><span class="line">    QVariantList scorelist;</span><br><span class="line">    scorelist &lt;&lt; <span class="number">98</span> &lt;&lt; <span class="number">88</span> &lt;&lt; <span class="number">99</span>;</span><br><span class="line">    <span class="comment">//给字段绑定相应的值，按顺序绑定</span></span><br><span class="line">    query.addBindValue(namelist);</span><br><span class="line">    query.addBindValue(agelist);</span><br><span class="line">    query.addBindValue(scorelist);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//执行预处理命令</span></span><br><span class="line">    query.execBatch();</span><br></pre></td></tr></table></figure>
+<p>oracle风格<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//oracle风格</span></span><br><span class="line"><span class="comment">//占位符 ： + 自定义名字</span></span><br><span class="line"></span><br><span class="line">query.prepare(<span class="string">"insert into student (name, age, score)values(:name, :age, :score);"</span>);</span><br><span class="line"><span class="comment">//给字段设置内容</span></span><br><span class="line">QVariantList namelist;</span><br><span class="line">namelist &lt;&lt; <span class="string">"xiaoa"</span> &lt;&lt; <span class="string">"xiaob"</span> &lt;&lt; <span class="string">"xiaoc"</span>;</span><br><span class="line">QVariantList agelist;</span><br><span class="line">agelist &lt;&lt; <span class="number">19</span> &lt;&lt; <span class="number">20</span> &lt;&lt; <span class="number">21</span>;</span><br><span class="line">QVariantList scorelist;</span><br><span class="line">scorelist &lt;&lt; <span class="number">98</span> &lt;&lt; <span class="number">88</span> &lt;&lt; <span class="number">99</span>;</span><br><span class="line"><span class="comment">//给字段绑定  可以不按照顺序</span></span><br><span class="line">query.bindValue(<span class="string">":name"</span>,namelist);</span><br><span class="line">query.bindValue(<span class="string">":score"</span>,scorelist);</span><br><span class="line">query.bindValue(<span class="string">":age"</span>,agelist);</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行预处理命令</span></span><br><span class="line">query.execBatch();</span><br></pre></td></tr></table></figure></p>
+<ol start="6">
+<li>更新数据（改）</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">QSqlQuery query;</span><br><span class="line">query.exec(<span class="string">"update student set score = 72 where id = 3"</span>);</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>查找并打印（查）</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">QSqlQuery query;</span><br><span class="line">query.exec(<span class="string">"select * from student where name = 'xiaob' "</span>);<span class="comment">//过滤</span></span><br><span class="line"><span class="keyword">while</span>(query.next())<span class="comment">//一行一行的查找，一直到没有返回false</span></span><br><span class="line">&#123;</span><br><span class="line">    qDebug()&lt;&lt;query.value(<span class="number">0</span>).toInt()</span><br><span class="line">         &lt;&lt;query.value(<span class="number">1</span>).toString()</span><br><span class="line">        &lt;&lt;query.value(<span class="string">"age"</span>).toInt()</span><br><span class="line">       &lt;&lt;query.value(<span class="number">3</span>).toInt();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="8">
+<li>在界面上执行删除操作（删）</li>
+</ol>
+<p>①设计页面如图所示<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/delete_dadabase.png" alt></p>
+<p>②右击按钮转到槽</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">void</span> Widget::on_buttondelete_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取行编辑器内容</span></span><br><span class="line">    QString name = ui-&gt;lineEdit-&gt;text();</span><br><span class="line">    QString sql = QString(<span class="string">"delete from student where name ='%1'"</span>).arg(name);</span><br><span class="line">    <span class="comment">//开启一个事务  QSqlDatabase::database()获取你操作的数据库</span></span><br><span class="line">    <span class="comment">//事务是数据库的一个重要功能，所谓事务是用户定义的一个数据库操作序列，这些操作要么全做要么全不做，是一个不可分割的工作单位。</span></span><br><span class="line">    <span class="comment">//qDebug()&lt;&lt; QSqlDatabase::database().transaction();//有的版本不支持这种用法</span></span><br><span class="line">    QSqlQuery query;</span><br><span class="line">    query.exec(<span class="string">"START TRANSACTION"</span>);</span><br><span class="line">    query.exec(sql);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Widget::on_buttonsure_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//确认删除</span></span><br><span class="line">    QSqlDatabase::database().commit();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> Widget::on_buttoncancel_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//回滚，撤销</span></span><br><span class="line">    qDebug()&lt;&lt;<span class="string">"hahahhahh"</span>;</span><br><span class="line">    QSqlDatabase::database().rollback();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="本地数据库Sqlite"><a href="#本地数据库Sqlite" class="headerlink" title="本地数据库Sqlite"></a>本地数据库Sqlite</h3><ol>
+<li>新建 Qt Widgets 应用， 项目名称为 Sqlite， 类名为Mywidget， 基类选择QWidget。</li>
+<li>在你的Sqlite相同目录下创建文件info.db</li>
+<li>在.pro文件中添加</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QT+= sql</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>操作，同mysql的操作基本一样，因为是本地数据库，所以没有连接数据库的操作</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlDatabase&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlError&gt;//</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlQuery&gt;//一组数据</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QVariantList&gt;//放任何类型，列表</span></span></span><br><span class="line"></span><br><span class="line">MyWidget::MyWidget(QWidget *parent) :</span><br><span class="line">    QWidget(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::MyWidget)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//打印QT支持的数据库驱动</span></span><br><span class="line">    qDebug()&lt;&lt;QSqlDatabase::drivers();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//添加qsqlite数据库 本地数据库</span></span><br><span class="line">    <span class="comment">//不是很大型的数据库</span></span><br><span class="line">    QSqlDatabase db = QSqlDatabase::addDatabase(<span class="string">"QSQLITE"</span>);</span><br><span class="line"></span><br><span class="line">    db.setDatabaseName(<span class="string">"../info.db"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//打开数据库是否成功</span></span><br><span class="line">    <span class="keyword">if</span>(!db.open())</span><br><span class="line">    &#123;</span><br><span class="line">        QMessageBox::warning(<span class="keyword">this</span>,<span class="string">"错误"</span>,db.lastError().text());</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//创建数据表格</span></span><br><span class="line">    QSqlQuery query;<span class="comment">//不支持自动添加id功能</span></span><br><span class="line">    query.exec(<span class="string">"create table student(id int primary key,name varchar(255),age int,score int);"</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    query.prepare(<span class="string">"insert into student (name, age, score)values(?,?,?);"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//给字段设置内容</span></span><br><span class="line">    QVariantList namelist;</span><br><span class="line">    namelist &lt;&lt; <span class="string">"xiaoming"</span> &lt;&lt; <span class="string">"xiaohua"</span> &lt;&lt; <span class="string">"xiaoliao"</span>;</span><br><span class="line">    QVariantList agelist;</span><br><span class="line">    agelist &lt;&lt; <span class="number">19</span> &lt;&lt; <span class="number">20</span> &lt;&lt; <span class="number">21</span>;</span><br><span class="line">    QVariantList scorelist;</span><br><span class="line">    scorelist &lt;&lt; <span class="number">98</span> &lt;&lt; <span class="number">88</span> &lt;&lt; <span class="number">99</span>;</span><br><span class="line">    <span class="comment">//给字段绑定相应的值，按顺序绑定</span></span><br><span class="line">    query.addBindValue(namelist);</span><br><span class="line">    query.addBindValue(agelist);</span><br><span class="line">    query.addBindValue(scorelist);</span><br><span class="line">    query.execBatch();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查找并打印</span></span><br><span class="line">    query.exec(<span class="string">"select * from student"</span>);</span><br><span class="line">    <span class="keyword">while</span>(query.next())<span class="comment">//一行一行的查找，一直到没有返回false</span></span><br><span class="line">    &#123;</span><br><span class="line">        qDebug()&lt;&lt;query.value(<span class="number">0</span>).toInt()</span><br><span class="line">             &lt;&lt;query.value(<span class="number">1</span>).toString()</span><br><span class="line">            &lt;&lt;query.value(<span class="string">"age"</span>).toInt()</span><br><span class="line">           &lt;&lt;query.value(<span class="number">3</span>).toInt();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="QTableModel类实现对数据库的可视化操作"><a href="#QTableModel类实现对数据库的可视化操作" class="headerlink" title="QTableModel类实现对数据库的可视化操作"></a>QTableModel类实现对数据库的可视化操作</h3><p>QSqlTableModel，该类提供了一个可读写单张SQL表的可编辑数据模型。下面实际操作一下</p>
+<ol>
+<li>新建 Qt Widgets 应用， 项目名称为sqlModel， 类名为Mywidget， 基类选择QWidget。</li>
+<li>在.pro文件中添加</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">QT+= sql</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>设计界面如图所示<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/qtablemodel.png" alt></li>
+</ol>
+<p>注意：和里面的显示数据库的框用的是Item Views(Model-Based)里的TableView。</p>
+<ol start="4">
+<li>在头文件中添加库和对象</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlTableModel&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Ui::MyWidget *ui;</span><br><span class="line"></span><br><span class="line">    QSqlTableModel *model;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>实现可视化操作</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlDatabase&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QDebug&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QMessageBox&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlError&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlTableModel&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QSqlRecord&gt;//数据库操作记录</span></span></span><br><span class="line"></span><br><span class="line">MyWidget::MyWidget(QWidget *parent) :</span><br><span class="line">    QWidget(parent),</span><br><span class="line">    ui(<span class="keyword">new</span> Ui::MyWidget)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//添加mysql数据库</span></span><br><span class="line">    QSqlDatabase db = QSqlDatabase::addDatabase(<span class="string">"QMYSQL"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//连接数据库</span></span><br><span class="line">    db.setHostName(<span class="string">"127.0.0.1"</span>);</span><br><span class="line">    db.setUserName(<span class="string">"root"</span>);</span><br><span class="line">    db.setPassword(<span class="string">"an1234"</span>);</span><br><span class="line">    db.setDatabaseName(<span class="string">"test_db"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//打开数据库是否成功</span></span><br><span class="line">    <span class="keyword">if</span>(!db.open())</span><br><span class="line">    &#123;</span><br><span class="line">        QMessageBox::warning(<span class="keyword">this</span>,<span class="string">"错误"</span>,db.lastError().text());</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置模型</span></span><br><span class="line">    model = <span class="keyword">new</span> QSqlTableModel(<span class="keyword">this</span>);</span><br><span class="line">    model-&gt;setTable(<span class="string">"student"</span>);<span class="comment">//指定使用那个表</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//把model放在view</span></span><br><span class="line">    ui-&gt;tableView-&gt;setModel(model);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//显示model里的数据</span></span><br><span class="line">    model-&gt;select();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//字段设置为指定中文名 第0个字段即id</span></span><br><span class="line">    model-&gt;setHeaderData(<span class="number">0</span>,Qt::Horizontal,<span class="string">"学号"</span>);</span><br><span class="line">    model-&gt;setHeaderData(<span class="number">1</span>,Qt::Horizontal,<span class="string">"姓名"</span>);</span><br><span class="line">    model-&gt;setHeaderData(<span class="number">2</span>,Qt::Horizontal,<span class="string">"年龄"</span>);</span><br><span class="line">    model-&gt;setHeaderData(<span class="number">3</span>,Qt::Horizontal,<span class="string">"分数"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置model的编辑模式 为手动提交</span></span><br><span class="line">    model-&gt;setEditStrategy(QSqlTableModel::OnManualSubmit);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置view中的数据库为不能修改</span></span><br><span class="line">    <span class="comment">//ui-&gt;tableView-&gt;setEditTriggers(QAbstractItemView::NoEditTriggers);</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>按钮槽函数添加代码</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//改</span></span><br><span class="line"><span class="comment">//修改操作可以直接在视图框中操作</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//增</span></span><br><span class="line"><span class="keyword">void</span> MyWidget::on_buttonadd_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//添加空记录</span></span><br><span class="line">    QSqlRecord record = model-&gt;record();</span><br><span class="line">    <span class="comment">//获取行号</span></span><br><span class="line">    <span class="keyword">int</span> row = model-&gt;rowCount();</span><br><span class="line">    model-&gt;insertRecord(row,record);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删</span></span><br><span class="line"><span class="keyword">void</span> MyWidget::on_buttondelete_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取选中的模型</span></span><br><span class="line">    QItemSelectionModel *sModel=ui-&gt;tableView-&gt;selectionModel();</span><br><span class="line">    <span class="comment">//取出选中模型中的索引（哪几行）</span></span><br><span class="line">    QModelIndexList <span class="built_in">list</span> = sModel-&gt;selectedRows();</span><br><span class="line">    <span class="comment">//删除所有选中的行</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ;i&lt;<span class="built_in">list</span>.size();i++)</span><br><span class="line">    &#123;</span><br><span class="line">        model-&gt;removeRow(<span class="built_in">list</span>.at(i).row());</span><br><span class="line">        <span class="comment">//取出所有索引中的i行的索引，再根据这个索引选中并删除这一行</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> MyWidget::on_buttonsure_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    model-&gt;submitAll();<span class="comment">//提交动作</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> MyWidget::on_buttoncancel_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    model-&gt;revertAll();<span class="comment">//取消动作</span></span><br><span class="line">    model-&gt;submitAll();<span class="comment">//提交动作（取消也是一个动作）</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//查</span></span><br><span class="line"><span class="keyword">void</span> MyWidget::on_buttonsure_2_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//获取行编辑器内容</span></span><br><span class="line">    QString name = ui-&gt;lineEdit-&gt;text();</span><br><span class="line">    <span class="comment">//过滤条件</span></span><br><span class="line">    QString str = QString(<span class="string">"name='%1'"</span>).arg(name);</span><br><span class="line">    model-&gt;setFilter(str);</span><br><span class="line">    model-&gt;select();<span class="comment">//重新显示model里的数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://Anzusen.com/2019/05/19/Qt实战（2）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -416,8 +679,8 @@
       
         
           
-            <h1 id="TCP-和-UDP-通信"><a href="#TCP-和-UDP-通信" class="headerlink" title="TCP 和 UDP 通信"></a>TCP 和 UDP 通信</h1><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立<strong>新</strong>的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的。Socket，也就是常说的“套接字”。Socket简单地说，就是一个IP地址加一个port端口<br>  先来看一下TCP通信原理图<br><img src="https://ananzhusen.github.io/images/TCP_connect.jpg" alt="TCP通信原理图"></p>
-<p><img src="https://ananzhusen.github.io/images/tcp_send_text.png" alt="TCP运行结果"></p>
+            <h1 id="TCP-和-UDP-通信"><a href="#TCP-和-UDP-通信" class="headerlink" title="TCP 和 UDP 通信"></a>TCP 和 UDP 通信</h1><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立<strong>新</strong>的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的。Socket，也就是常说的“套接字”。Socket简单地说，就是一个IP地址加一个port端口<br> TCP通信原理图<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/TCP_connect.jpg" alt="TCP通信原理图"></p>
+<p>先来看运行结果：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_send_text.png" alt></p>
 <h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><ol>
 <li>新建项目，选择Qt Widgets应用，项目名为TCP_connect,类名为ServerWidget。</li>
 <li><p>在 TCP_connect.pro内联网，添加以下代码，添加后先编译不运行。（之后的所有有关UDP和CDP，<strong>都要加上这句</strong>，以后不再多说。）</p>
@@ -445,8 +708,8 @@
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QHostAddress&gt;//之后的操作要添加此头文件</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClientWidget::on_bottonSend_clicked()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//获取write编辑框内容</span></span><br><span class="line">    QString str=ui-&gt;textEditWrite-&gt;toPlainText();</span><br><span class="line">    <span class="comment">//发送数据</span></span><br><span class="line">    tcpsocket-&gt;write(str.toUtf8().data());</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClientWidget::on_buttonConnect_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//从输入行编辑器获取服务器的ip和端口</span></span><br><span class="line">    QString ip=ui-&gt;lineEditIp-&gt;text();</span><br><span class="line">    qint16 port=ui-&gt;lineEditPort-&gt;text().toInt();<span class="comment">//qint16代表16位的无符号整形。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//主动和服务器建立连接</span></span><br><span class="line">    tcpsocket-&gt;connectToHost(QHostAddress(ip),port);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClientWidget::on_bottonClose_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//主动和对方断开连接</span></span><br><span class="line">    tcpsocket-&gt;disconnectFromHost();</span><br><span class="line">    tcpsocket-&gt;close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>  UDP（User Datagram Protocol即用户数据报协议）是一个轻量级的，不可靠的，面向数据报的无连接协议。就像我们现在使用的QQ，其聊天时就是使用UDP协议进行消息发送的。像QQ那样，当有很多用户，发送的大部分都是短消息，要求能及时响应，并且对安全性要求不是很高的情况下使用UDP协议。即使偶尔丢失一两个数据包，也不会对接收结果产生太大影响。</p>
-<p>   在Qt中提供了QUdpSocket 类来进行UDP数据报（datagrams）的发送(writeDatagram)和接收(readDatagram)。<br> 先来看一下UDP通信过程<br><img src="https://ananzhusen.github.io/images/UDP_imag.png" alt="udp通信原理图"></p>
-<p>现在我们来创造下面如图所示的一个服务器：<br><img src="https://ananzhusen.github.io/images/udp_connect.png" alt="udp运行结果"><br>新建项目，选择Qt Widgets应用，项目名为udpsocket,类名为Widget。</p>
+<p>   在Qt中提供了QUdpSocket 类来进行UDP数据报（datagrams）的发送(writeDatagram)和接收(readDatagram)。<br> 先来看一下UDP通信过程<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/UDP_imag.png" alt="udp通信原理图"></p>
+<p>现在我们来创造下面如图所示的一个服务器：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/udp_connect.png" alt="udp运行结果"><br>新建项目，选择Qt Widgets应用，项目名为udpsocket,类名为Widget。</p>
 <ol>
 <li>先根据上图设计界面</li>
 <li>在头文件中添加通信套接字声明，再定义一个对象</li>
@@ -474,7 +737,7 @@
 <ul>
 <li>组播地址必须是D类地址</li>
 </ul>
-<h2 id="TCP传输文件"><a href="#TCP传输文件" class="headerlink" title="TCP传输文件"></a>TCP传输文件</h2><p>  先来看过传输文件程图：<br><img src="https://ananzhusen.github.io/images/tcp_file.png" alt="TCP传输文件运行结果图"><br>  运行结果：<br><img src="https://ananzhusen.github.io/images/tcp_sendfile.png" alt="TCP传输文件运行结果图"></p>
+<h2 id="TCP传输文件"><a href="#TCP传输文件" class="headerlink" title="TCP传输文件"></a>TCP传输文件</h2><p>  先来看过传输文件程图：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_file.png" alt="TCP传输文件运行结果图"><br>  运行结果：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_sendfile.png" alt="TCP传输文件运行结果图"></p>
 <p>首先看到运行结果如上图所示<br>新建项目，选择Qt Widgets应用，项目名为tcpfile,类名为ServerWidget。</p>
 <h3 id="服务端-1"><a href="#服务端-1" class="headerlink" title="服务端"></a>服务端</h3><ol>
 <li>根据运行结果设计界面.</li>
@@ -507,7 +770,7 @@
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"serverwidget.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"clientwidget.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">    ServerWidget w;</span><br><span class="line">    w.show();</span><br><span class="line"></span><br><span class="line">    clientWidget w2;</span><br><span class="line">    w2.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>  在学完上面的四个知识后，我写了一个实现两个pc机之间互相通信的程序，一个简单的聊天室，运行结果如下图，另一端改变绑定端口即可，使用的UDP协议，可以实现发文字消息和传输文件（文件对方接收后可以直接创建，但只能写一部分进去，我一直以为是文件写入有问题，后来才找出是我发文件的这一端发送文件大小小于实际文件大小，然后拖着拖着就难得去改了（优秀）），里面最大的问题是判断你接受的是文件还是文字问题，然后我用了分片（section）加关键字（file 和 text）区分。之后我会把我的代码上传到码云，这里不再说明过程。</p>
-<p><img src="https://ananzhusen.github.io/images/chat_now.png" alt="TCP传输文件运行结果图"></p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/chat_now.png" alt="TCP传输文件运行结果图"></p>
 
           
         
@@ -2040,193 +2303,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://Anzusen.com/2019/03/27/学习java/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="ananzhusen">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/touxiang.JPG">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Anzhusen">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/27/学习java/" itemprop="url">学习java</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-27T13:56:29+08:00">
-                2019-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/27/学习java/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/27/学习java/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  11.1k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  44
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="java学习过程中的注意事项及与其他语言不同的地方"><a href="#java学习过程中的注意事项及与其他语言不同的地方" class="headerlink" title="java学习过程中的注意事项及与其他语言不同的地方"></a>java学习过程中的注意事项及与其他语言不同的地方</h1>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/27/学习java/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2279,7 +2355,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2301,7 +2377,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Qtcreator,实战,">
+  <meta name="keywords" content="Qtcreator,TCP,UDP,">
 
 
 
@@ -80,25 +80,25 @@
 
 
 <meta name="description" content="TCP 和 UDP 通信TCP  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立新的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的">
-<meta name="keywords" content="Qtcreator,实战">
+<meta name="keywords" content="Qtcreator,TCP,UDP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt实战（2）">
 <meta property="og:url" content="http://Anzusen.com/2019/05/19/Qt实战（2）/index.html">
 <meta property="og:site_name" content="Anzhusen">
 <meta property="og:description" content="TCP 和 UDP 通信TCP  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立新的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://ananzhusen.github.io/images/TCP_connect.jpg">
-<meta property="og:image" content="https://ananzhusen.github.io/images/tcp_send_text.png">
-<meta property="og:image" content="https://ananzhusen.github.io/images/UDP_imag.png">
-<meta property="og:image" content="https://ananzhusen.github.io/images/udp_connect.png">
-<meta property="og:image" content="https://ananzhusen.github.io/images/tcp_file.png">
-<meta property="og:image" content="https://ananzhusen.github.io/images/tcp_sendfile.png">
-<meta property="og:image" content="https://ananzhusen.github.io/images/chat_now.png">
-<meta property="og:updated_time" content="2019-05-24T14:21:23.172Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/TCP_connect.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_send_text.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/UDP_imag.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/udp_connect.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_file.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_sendfile.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/chat_now.png">
+<meta property="og:updated_time" content="2019-05-27T12:41:20.902Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt实战（2）">
 <meta name="twitter:description" content="TCP 和 UDP 通信TCP  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立新的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的">
-<meta name="twitter:image" content="https://ananzhusen.github.io/images/TCP_connect.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/TCP_connect.jpg">
 
 
 
@@ -429,8 +429,8 @@
       
 
       
-        <h1 id="TCP-和-UDP-通信"><a href="#TCP-和-UDP-通信" class="headerlink" title="TCP 和 UDP 通信"></a>TCP 和 UDP 通信</h1><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立<strong>新</strong>的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的。Socket，也就是常说的“套接字”。Socket简单地说，就是一个IP地址加一个port端口<br>  先来看一下TCP通信原理图<br><img src="https://ananzhusen.github.io/images/TCP_connect.jpg" alt="TCP通信原理图"></p>
-<p><img src="https://ananzhusen.github.io/images/tcp_send_text.png" alt="TCP运行结果"></p>
+        <h1 id="TCP-和-UDP-通信"><a href="#TCP-和-UDP-通信" class="headerlink" title="TCP 和 UDP 通信"></a>TCP 和 UDP 通信</h1><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立<strong>新</strong>的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的。Socket，也就是常说的“套接字”。Socket简单地说，就是一个IP地址加一个port端口<br> TCP通信原理图<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/TCP_connect.jpg" alt="TCP通信原理图"></p>
+<p>先来看运行结果：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_send_text.png" alt></p>
 <h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><ol>
 <li>新建项目，选择Qt Widgets应用，项目名为TCP_connect,类名为ServerWidget。</li>
 <li><p>在 TCP_connect.pro内联网，添加以下代码，添加后先编译不运行。（之后的所有有关UDP和CDP，<strong>都要加上这句</strong>，以后不再多说。）</p>
@@ -458,8 +458,8 @@
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;QHostAddress&gt;//之后的操作要添加此头文件</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClientWidget::on_bottonSend_clicked()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="comment">//获取write编辑框内容</span></span><br><span class="line">    QString str=ui-&gt;textEditWrite-&gt;toPlainText();</span><br><span class="line">    <span class="comment">//发送数据</span></span><br><span class="line">    tcpsocket-&gt;write(str.toUtf8().data());</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClientWidget::on_buttonConnect_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//从输入行编辑器获取服务器的ip和端口</span></span><br><span class="line">    QString ip=ui-&gt;lineEditIp-&gt;text();</span><br><span class="line">    qint16 port=ui-&gt;lineEditPort-&gt;text().toInt();<span class="comment">//qint16代表16位的无符号整形。</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//主动和服务器建立连接</span></span><br><span class="line">    tcpsocket-&gt;connectToHost(QHostAddress(ip),port);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> ClientWidget::on_bottonClose_clicked()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//主动和对方断开连接</span></span><br><span class="line">    tcpsocket-&gt;disconnectFromHost();</span><br><span class="line">    tcpsocket-&gt;close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>  UDP（User Datagram Protocol即用户数据报协议）是一个轻量级的，不可靠的，面向数据报的无连接协议。就像我们现在使用的QQ，其聊天时就是使用UDP协议进行消息发送的。像QQ那样，当有很多用户，发送的大部分都是短消息，要求能及时响应，并且对安全性要求不是很高的情况下使用UDP协议。即使偶尔丢失一两个数据包，也不会对接收结果产生太大影响。</p>
-<p>   在Qt中提供了QUdpSocket 类来进行UDP数据报（datagrams）的发送(writeDatagram)和接收(readDatagram)。<br> 先来看一下UDP通信过程<br><img src="https://ananzhusen.github.io/images/UDP_imag.png" alt="udp通信原理图"></p>
-<p>现在我们来创造下面如图所示的一个服务器：<br><img src="https://ananzhusen.github.io/images/udp_connect.png" alt="udp运行结果"><br>新建项目，选择Qt Widgets应用，项目名为udpsocket,类名为Widget。</p>
+<p>   在Qt中提供了QUdpSocket 类来进行UDP数据报（datagrams）的发送(writeDatagram)和接收(readDatagram)。<br> 先来看一下UDP通信过程<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/UDP_imag.png" alt="udp通信原理图"></p>
+<p>现在我们来创造下面如图所示的一个服务器：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/udp_connect.png" alt="udp运行结果"><br>新建项目，选择Qt Widgets应用，项目名为udpsocket,类名为Widget。</p>
 <ol>
 <li>先根据上图设计界面</li>
 <li>在头文件中添加通信套接字声明，再定义一个对象</li>
@@ -487,7 +487,7 @@
 <ul>
 <li>组播地址必须是D类地址</li>
 </ul>
-<h2 id="TCP传输文件"><a href="#TCP传输文件" class="headerlink" title="TCP传输文件"></a>TCP传输文件</h2><p>  先来看过传输文件程图：<br><img src="https://ananzhusen.github.io/images/tcp_file.png" alt="TCP传输文件运行结果图"><br>  运行结果：<br><img src="https://ananzhusen.github.io/images/tcp_sendfile.png" alt="TCP传输文件运行结果图"></p>
+<h2 id="TCP传输文件"><a href="#TCP传输文件" class="headerlink" title="TCP传输文件"></a>TCP传输文件</h2><p>  先来看过传输文件程图：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_file.png" alt="TCP传输文件运行结果图"><br>  运行结果：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_sendfile.png" alt="TCP传输文件运行结果图"></p>
 <p>首先看到运行结果如上图所示<br>新建项目，选择Qt Widgets应用，项目名为tcpfile,类名为ServerWidget。</p>
 <h3 id="服务端-1"><a href="#服务端-1" class="headerlink" title="服务端"></a>服务端</h3><ol>
 <li>根据运行结果设计界面.</li>
@@ -520,7 +520,7 @@
 </ol>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"serverwidget.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">"clientwidget.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">    ServerWidget w;</span><br><span class="line">    w.show();</span><br><span class="line"></span><br><span class="line">    clientWidget w2;</span><br><span class="line">    w2.show();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> a.exec();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>  在学完上面的四个知识后，我写了一个实现两个pc机之间互相通信的程序，一个简单的聊天室，运行结果如下图，另一端改变绑定端口即可，使用的UDP协议，可以实现发文字消息和传输文件（文件对方接收后可以直接创建，但只能写一部分进去，我一直以为是文件写入有问题，后来才找出是我发文件的这一端发送文件大小小于实际文件大小，然后拖着拖着就难得去改了（优秀）），里面最大的问题是判断你接受的是文件还是文字问题，然后我用了分片（section）加关键字（file 和 text）区分。之后我会把我的代码上传到码云，这里不再说明过程。</p>
-<p><img src="https://ananzhusen.github.io/images/chat_now.png" alt="TCP传输文件运行结果图"></p>
+<p><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/chat_now.png" alt="TCP传输文件运行结果图"></p>
 
       
     </div>
@@ -569,7 +569,9 @@
           
             <a href="/tags/Qtcreator/" rel="tag"># Qtcreator</a>
           
-            <a href="/tags/实战/" rel="tag"># 实战</a>
+            <a href="/tags/TCP/" rel="tag"># TCP</a>
+          
+            <a href="/tags/UDP/" rel="tag"># UDP</a>
           
         </div>
       
@@ -591,6 +593,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/26/Qt实战（3）/" rel="prev" title="Qt实战（3）">
+                Qt实战（3） <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -698,7 +704,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -720,7 +726,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
