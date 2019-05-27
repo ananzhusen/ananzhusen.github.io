@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="TCP 和 UDP 通信TCP  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立新的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的">
+<meta name="description" content="TCP 和 UDP 通信">
 <meta name="keywords" content="Qtcreator,TCP,UDP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt实战（2）">
 <meta property="og:url" content="http://Anzusen.com/2019/05/19/Qt实战（2）/index.html">
 <meta property="og:site_name" content="Anzhusen">
-<meta property="og:description" content="TCP 和 UDP 通信TCP  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立新的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的">
+<meta property="og:description" content="TCP 和 UDP 通信">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/TCP_connect.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_send_text.png">
@@ -94,10 +94,10 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_file.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_sendfile.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/chat_now.png">
-<meta property="og:updated_time" content="2019-05-27T12:41:20.902Z">
+<meta property="og:updated_time" content="2019-05-27T13:03:20.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Qt实战（2）">
-<meta name="twitter:description" content="TCP 和 UDP 通信TCP  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立新的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的">
+<meta name="twitter:description" content="TCP 和 UDP 通信">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/TCP_connect.jpg">
 
 
@@ -429,7 +429,8 @@
       
 
       
-        <h1 id="TCP-和-UDP-通信"><a href="#TCP-和-UDP-通信" class="headerlink" title="TCP 和 UDP 通信"></a>TCP 和 UDP 通信</h1><h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立<strong>新</strong>的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的。Socket，也就是常说的“套接字”。Socket简单地说，就是一个IP地址加一个port端口<br> TCP通信原理图<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/TCP_connect.jpg" alt="TCP通信原理图"></p>
+        <h1 id="TCP-和-UDP-通信"><a href="#TCP-和-UDP-通信" class="headerlink" title="TCP 和 UDP 通信"></a>TCP 和 UDP 通信</h1><a id="more"></a>
+<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>  先通过一张图片了解TCP通信过程，QT的TCP Socket（套接字）通信仍然有服务端、客户端之分。图中左为客户端，右为服务端。服务端通过监听某个端口来监听是否有客户端连接到来，如果有连接到来，则建立<strong>新</strong>的SOCKET连接；客户端通过IP和PORT（端口）连接服务端，当成功建立连接之后，就可进行数据的接收和发送了。数据的收发是通过read()和write()来进行的。Socket，也就是常说的“套接字”。Socket简单地说，就是一个IP地址加一个port端口<br> TCP通信原理图<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/TCP_connect.jpg" alt="TCP通信原理图"></p>
 <p>先来看运行结果：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/tcp_send_text.png" alt></p>
 <h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><ol>
 <li>新建项目，选择Qt Widgets应用，项目名为TCP_connect,类名为ServerWidget。</li>
