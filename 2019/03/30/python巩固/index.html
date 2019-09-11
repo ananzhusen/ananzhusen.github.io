@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://www.runoob.com/wp-content/uploads/2013/11/python-string-slice.png">
 <meta property="og:image" content="http://www.runoob.com/wp-content/uploads/2013/11/python_list_slice_2.png">
 <meta property="og:image" content="http://www.runoob.com/wp-content/uploads/2013/11/list_slicing1.png">
-<meta property="og:updated_time" content="2019-03-30T10:34:09.183Z">
+<meta property="og:updated_time" content="2019-09-11T11:55:05.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python巩固">
 <meta name="twitter:description" content="巩固python基础">
@@ -388,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  9.6k
+                  8.5k
                 </span>
               
 
@@ -404,7 +404,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  37
+                  32
                 </span>
               
             </div>
@@ -426,6 +426,7 @@
 
       
         <h3 id="巩固python基础"><a href="#巩固python基础" class="headerlink" title="巩固python基础"></a>巩固python基础</h3><a id="more"></a>
+<p>ps: 该篇博客学习自<a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a></p>
 <h4 id="中文编码"><a href="#中文编码" class="headerlink" title="中文编码"></a>中文编码</h4><p>Python中默认的编码格式是 ASCII 格式，在没修改编码格式时无法正确打印汉字，所以在读取中文时会报错。<br>解决方法为只要在文件开头加入 <strong># -*- coding: UTF-8 -*-</strong> 或者 <strong>#coding=utf-8</strong> 就行了</p>
 <blockquote>
 <p><strong>注意：**</strong>#coding=utf-8<strong> 的 </strong>=** 号两边不要空格。</p>
@@ -844,72 +845,6 @@
 </ul>
 <p>查看 math 查看包中的内容:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> math</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(math)</span><br><span class="line">[<span class="string">'__doc__'</span>, <span class="string">'__file__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>, <span class="string">'acos'</span>, <span class="string">'acosh'</span>, <span class="string">'asin'</span>, <span class="string">'asinh'</span>, <span class="string">'atan'</span>, <span class="string">'atan2'</span>, <span class="string">'atanh'</span>, <span class="string">'ceil'</span>, <span class="string">'copysign'</span>, <span class="string">'cos'</span>, <span class="string">'cosh'</span>, <span class="string">'degrees'</span>, <span class="string">'e'</span>, <span class="string">'erf'</span>, <span class="string">'erfc'</span>, <span class="string">'exp'</span>, <span class="string">'expm1'</span>, <span class="string">'fabs'</span>, <span class="string">'factorial'</span>, <span class="string">'floor'</span>, <span class="string">'fmod'</span>, <span class="string">'frexp'</span>, <span class="string">'fsum'</span>, <span class="string">'gamma'</span>, <span class="string">'gcd'</span>, <span class="string">'hypot'</span>, <span class="string">'inf'</span>, <span class="string">'isclose'</span>, <span class="string">'isfinite'</span>, <span class="string">'isinf'</span>, <span class="string">'isnan'</span>, <span class="string">'ldexp'</span>, <span class="string">'lgamma'</span>, <span class="string">'log'</span>, <span class="string">'log10'</span>, <span class="string">'log1p'</span>, <span class="string">'log2'</span>, <span class="string">'modf'</span>, <span class="string">'nan'</span>, <span class="string">'pi'</span>, <span class="string">'pow'</span>, <span class="string">'radians'</span>, <span class="string">'sin'</span>, <span class="string">'sinh'</span>, <span class="string">'sqrt'</span>, <span class="string">'tan'</span>, <span class="string">'tanh'</span>, <span class="string">'tau'</span>, <span class="string">'trunc'</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
 <p>查看 cmath 查看包中的内容<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> cmath</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(cmath)</span><br><span class="line">[<span class="string">'__doc__'</span>, <span class="string">'__file__'</span>, <span class="string">'__loader__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'__spec__'</span>, <span class="string">'acos'</span>, <span class="string">'acosh'</span>, <span class="string">'asin'</span>, <span class="string">'asinh'</span>, <span class="string">'atan'</span>, <span class="string">'atanh'</span>, <span class="string">'cos'</span>, <span class="string">'cosh'</span>, <span class="string">'e'</span>, <span class="string">'exp'</span>, <span class="string">'inf'</span>, <span class="string">'infj'</span>, <span class="string">'isclose'</span>, <span class="string">'isfinite'</span>, <span class="string">'isinf'</span>, <span class="string">'isnan'</span>, <span class="string">'log'</span>, <span class="string">'log10'</span>, <span class="string">'nan'</span>, <span class="string">'nanj'</span>, <span class="string">'phase'</span>, <span class="string">'pi'</span>, <span class="string">'polar'</span>, <span class="string">'rect'</span>, <span class="string">'sin'</span>, <span class="string">'sinh'</span>, <span class="string">'sqrt'</span>, <span class="string">'tan'</span>, <span class="string">'tanh'</span>, <span class="string">'tau'</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></p>
-<h5 id="Python数学函数"><a href="#Python数学函数" class="headerlink" title="Python数学函数"></a>Python数学函数</h5><table>
-<thead>
-<tr>
-<th style="text-align:left">函数</th>
-<th style="text-align:left">返回值 ( 描述 )</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-abs.html" target="_blank" rel="noopener">abs(x)</a></td>
-<td style="text-align:left">返回数字的绝对值，如abs(-10) 返回 10</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-ceil.html" target="_blank" rel="noopener">ceil(x)</a></td>
-<td style="text-align:left">返回数字的上入整数，如math.ceil(4.1) 返回 5</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-cmp.html" target="_blank" rel="noopener">cmp(x, y)</a></td>
-<td style="text-align:left">如果 x &lt; y 返回 -1, 如果 x == y 返回 0, 如果 x &gt; y 返回 1</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-exp.html" target="_blank" rel="noopener">exp(x)</a></td>
-<td style="text-align:left">返回e的x次幂(ex),如math.exp(1) 返回2.718281828459045</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-fabs.html" target="_blank" rel="noopener">fabs(x)</a></td>
-<td style="text-align:left">返回数字的绝对值，如math.fabs(-10) 返回10.0</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-floor.html" target="_blank" rel="noopener">floor(x)</a></td>
-<td style="text-align:left">返回数字的下舍整数，如math.floor(4.9)返回 4</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-log.html" target="_blank" rel="noopener">log(x)</a></td>
-<td style="text-align:left">如math.log(math.e)返回1.0,math.log(100,10)返回2.0</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-log10.html" target="_blank" rel="noopener">log10(x)</a></td>
-<td style="text-align:left">返回以10为基数的x的对数，如math.log10(100)返回 2.0</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-max.html" target="_blank" rel="noopener">max(x1, x2,…)</a></td>
-<td style="text-align:left">返回给定参数的最大值，参数可以为序列。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-min.html" target="_blank" rel="noopener">min(x1, x2,…)</a></td>
-<td style="text-align:left">返回给定参数的最小值，参数可以为序列。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-modf.html" target="_blank" rel="noopener">modf(x)</a></td>
-<td style="text-align:left">返回x的整数部分与小数部分，两部分的数值符号与x相同，整数部分以浮点型表示。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-pow.html" target="_blank" rel="noopener">pow(x, y)</a></td>
-<td style="text-align:left">x**y 运算后的值。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-round.html" target="_blank" rel="noopener">round(x [,n])</a></td>
-<td style="text-align:left">返回浮点数x的四舍五入值，如给出n值，则代表舍入到小数点后的位数。</td>
-</tr>
-<tr>
-<td style="text-align:left"><a href="http://www.runoob.com/python/func-number-sqrt.html" target="_blank" rel="noopener">sqrt(x)</a></td>
-<td style="text-align:left">返回数字x的平方根</td>
-</tr>
-</tbody>
-</table>
 <h5 id="Python随机数函数"><a href="#Python随机数函数" class="headerlink" title="Python随机数函数"></a>Python随机数函数</h5><p>随机数可以用于数学，游戏，安全等领域中，还经常被嵌入到算法中，用以提高算法效率，并提高程序的安全性。</p>
 <p>Python包含以下常用随机数函数：</p>
 <table>
@@ -946,7 +881,6 @@
 </tr>
 </tbody>
 </table>
-<hr>
 <h5 id="Python三角函数"><a href="#Python三角函数" class="headerlink" title="Python三角函数"></a>Python三角函数</h5><p>Python包括以下三角函数：</p>
 <table>
 <thead>
@@ -1022,130 +956,14 @@
 <ul>
 <li>Python 的 time 模块下有很多函数可以转换常见日期格式。如函数time.time()用于获取当前时间戳, </li>
 </ul>
-<h5 id="Time-模块"><a href="#Time-模块" class="headerlink" title="Time 模块"></a>Time 模块</h5><p>Time 模块包含了以下内置函数，既有时间处理的，也有转换时间格式的：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">序号</th>
-<th style="text-align:left">函数及描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-altzone.html" target="_blank" rel="noopener">time.altzone</a> 返回格林威治西部的夏令时地区的偏移秒数。如果该地区在格林威治东部会返回负值（如西欧，包括英国）。对夏令时启用地区才能使用。</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-asctime.html" target="_blank" rel="noopener">time.asctime([tupletime])</a> 接受时间元组并返回一个可读的形式为”Tue Dec 11 18:07:14 2008”（2008年12月11日 周二18时07分14秒）的24个字符的字符串。</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-clock.html" target="_blank" rel="noopener">time.clock( )</a> 用以浮点数计算的秒数返回当前的CPU时间。用来衡量不同程序的耗时，比time.time()更有用。</td>
-</tr>
-<tr>
-<td style="text-align:left">4</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-ctime.html" target="_blank" rel="noopener">time.ctime([secs])</a> 作用相当于asctime(localtime(secs))，未给参数相当于asctime()</td>
-</tr>
-<tr>
-<td style="text-align:left">5</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-gmtime.html" target="_blank" rel="noopener">time.gmtime([secs])</a> 接收时间戳（1970纪元后经过的浮点秒数）并返回格林威治天文时间下的时间元组t。注：t.tm_isdst始终为0</td>
-</tr>
-<tr>
-<td style="text-align:left">6</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-localtime.html" target="_blank" rel="noopener">time.localtime([secs])</a> 接收时间戳（1970纪元后经过的浮点秒数）并返回当地时间下的时间元组t（t.tm_isdst可取0或1，取决于当地当时是不是夏令时）。</td>
-</tr>
-<tr>
-<td style="text-align:left">7</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-mktime.html" target="_blank" rel="noopener">time.mktime(tupletime)</a> 接受时间元组并返回时间戳（1970纪元后经过的浮点秒数）。</td>
-</tr>
-<tr>
-<td style="text-align:left">8</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-sleep.html" target="_blank" rel="noopener">time.sleep(secs)</a> 推迟调用线程的运行，secs指秒数。</td>
-</tr>
-<tr>
-<td style="text-align:left">9</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-strftime.html" target="_blank" rel="noopener">time.strftime(fmt[,tupletime])</a> 接收以时间元组，并返回以可读字符串表示的当地时间，格式由fmt决定。</td>
-</tr>
-<tr>
-<td style="text-align:left">10</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-strptime.html" target="_blank" rel="noopener">time.strptime(str,fmt=’%a %b %d %H:%M:%S %Y’)</a> 根据fmt的格式把一个时间字符串解析为时间元组。</td>
-</tr>
-<tr>
-<td style="text-align:left">11</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-time.html" target="_blank" rel="noopener">time.time( )</a> 返回当前时间的时间戳（1970纪元后经过的浮点秒数）。</td>
-</tr>
-<tr>
-<td style="text-align:left">12</td>
-<td style="text-align:left"><a href="http://www.runoob.com/python/att-time-tzset.html" target="_blank" rel="noopener">time.tzset()</a> 根据环境变量TZ重新初始化时间相关设置。</td>
-</tr>
-</tbody>
-</table>
+<h5 id="Time-模块"><a href="#Time-模块" class="headerlink" title="Time 模块"></a>Time 模块</h5><p>Time 模块包含了以下内置函数，既有时间处理的，也有转换时间格式的.<br>详情访问：<a href="https://www.runoob.com/python/python-date-time.html" target="_blank" rel="noopener">Python 日期和时间</a></p>
 <h6 id="实例-4"><a href="#实例-4" class="headerlink" title="实例"></a>实例</h6><p>以下实例展示了 time() 函数的使用方法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="keyword">print</span> <span class="string">"time.time(): %f "</span> %  time.time()</span><br><span class="line"><span class="keyword">print</span> time.localtime( time.time() )</span><br><span class="line"><span class="keyword">print</span> time.asctime( time.localtime(time.time()) )</span><br></pre></td></tr></table></figure></p>
 <p>运行结果：</p>
 <blockquote>
 <p>1553931680.6086578<br>time.struct_time(tm_year=2019, tm_mon=3, tm_mday=30, tm_hour=15, tm_min=41, tm_sec=57, tm_wday=5, tm_yday=89, tm_isdst=0)<br>Sat Mar 30 15:43:23 2019</p>
 </blockquote>
 <h5 id="日历（Calendar）模块"><a href="#日历（Calendar）模块" class="headerlink" title="日历（Calendar）模块"></a>日历（Calendar）模块</h5><p>此模块的函数都是日历相关的，例如打印某月的字符月历。</p>
-<p>星期一是默认的每周第一天，星期天是默认的最后一天。更改设置需调用calendar.setfirstweekday()函数。模块包含了以下内置函数：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">序号</th>
-<th style="text-align:left">函数及描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">1</td>
-<td style="text-align:left"><strong>calendar.calendar(year,w=2,l=1,c=6)</strong> 返回一个多行字符串格式的year年年历，3个月一行，间隔距离为c。 每日宽度间隔为w字符。每行长度为21<em> W+18+2</em> C。l是每星期行数。</td>
-</tr>
-<tr>
-<td style="text-align:left">2</td>
-<td style="text-align:left"><strong>calendar.firstweekday( )</strong> 返回当前每周起始日期的设置。默认情况下，首次载入caendar模块时返回0，即星期一。</td>
-</tr>
-<tr>
-<td style="text-align:left">3</td>
-<td style="text-align:left"><strong>calendar.isleap(year)</strong> 是闰年返回 True，否则为 False。`</td>
-</tr>
-<tr>
-<td style="text-align:left">4</td>
-<td style="text-align:left"><strong>calendar.leapdays(y1,y2)</strong> 返回在Y1，Y2两年之间的闰年总数。</td>
-</tr>
-<tr>
-<td style="text-align:left">5</td>
-<td style="text-align:left"><strong>calendar.month(year,month,w=2,l=1)</strong> 返回一个多行字符串格式的year年month月日历，两行标题，一周一行。每日宽度间隔为w字符。每行的长度为7* w+6。l是每星期的行数。</td>
-</tr>
-<tr>
-<td style="text-align:left">6</td>
-<td style="text-align:left"><strong>calendar.monthcalendar(year,month)</strong> 返回一个整数的单层嵌套列表。每个子列表装载代表一个星期的整数。Year年month月外的日期都设为0;范围内的日子都由该月第几日表示，从1开始。</td>
-</tr>
-<tr>
-<td style="text-align:left">7</td>
-<td style="text-align:left"><strong>calendar.monthrange(year,month)</strong> 返回两个整数。第一个是该月的星期几的日期码，第二个是该月的日期码。日从0（星期一）到6（星期日）;月从1到12。</td>
-</tr>
-<tr>
-<td style="text-align:left">8</td>
-<td style="text-align:left"><strong>calendar.prcal(year,w=2,l=1,c=6)</strong> 相当于 print calendar.calendar(year,w,l,c).</td>
-</tr>
-<tr>
-<td style="text-align:left">9</td>
-<td style="text-align:left"><strong>calendar.prmonth(year,month,w=2,l=1)</strong> 相当于 print calendar.calendar（year，w，l，c）。</td>
-</tr>
-<tr>
-<td style="text-align:left">10</td>
-<td style="text-align:left"><strong>calendar.setfirstweekday(weekday)</strong> 设置每周的起始日期码。0（星期一）到6（星期日）。</td>
-</tr>
-<tr>
-<td style="text-align:left">11</td>
-<td style="text-align:left"><strong>calendar.timegm(tupletime)</strong> 和time.gmtime相反：接受一个时间元组形式，返回该时刻的时间戳（1970纪元后经过的浮点秒数）。</td>
-</tr>
-<tr>
-<td style="text-align:left">12</td>
-<td style="text-align:left"><strong>calendar.weekday(year,month,day)</strong> 返回给定日期的日期码。0（星期一）到6（星期日）。月份为 1（一月） 到 12（12月）。</td>
-</tr>
-</tbody>
-</table>
+<p>星期一是默认的每周第一天，星期天是默认的最后一天。</p>
 <h6 id="实例-5"><a href="#实例-5" class="headerlink" title="实例"></a>实例</h6><p>获取某月日历<br>Calendar模块有很广泛的方法用来处理年历和月历，例如打印某月的月历：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: UTF-8 -*-</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> calendar</span><br><span class="line"> </span><br><span class="line">cal = calendar.month(<span class="number">2019</span>, <span class="number">3</span>)</span><br><span class="line"><span class="keyword">print</span> <span class="string">"以下输出2019年3月份的日历:"</span></span><br><span class="line"><span class="keyword">print</span> cal</span><br></pre></td></tr></table></figure>
 <p>运行结果：</p>
@@ -1537,8 +1355,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/29/选择/" rel="next" title="Choice">
-                <i class="fa fa-chevron-left"></i> Choice
+              <a href="/2019/03/27/学习java/" rel="next" title="学习java">
+                <i class="fa fa-chevron-left"></i> 学习java
               </a>
             
           </div>
@@ -1657,7 +1475,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1668,7 +1486,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1679,7 +1497,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -1742,7 +1560,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#巩固python基础"><span class="nav-number">1.</span> <span class="nav-text">巩固python基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中文编码"><span class="nav-number">1.1.</span> <span class="nav-text">中文编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标识符"><span class="nav-number">1.2.</span> <span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行和缩进"><span class="nav-number">1.3.</span> <span class="nav-text">行和缩进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多行语句"><span class="nav-number">1.4.</span> <span class="nav-text">多行语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Print-输出"><span class="nav-number">1.5.</span> <span class="nav-text">Print 输出</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#b"><span class="nav-number"></span> <span class="nav-text">b</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准数据类型"><span class="nav-number">0.1.</span> <span class="nav-text">标准数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数字"><span class="nav-number">0.1.1.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串"><span class="nav-number">0.1.2.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例"><span class="nav-number">0.1.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列表"><span class="nav-number">0.1.3.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#列表方法"><span class="nav-number">0.1.3.1.</span> <span class="nav-text">列表方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-1"><span class="nav-number">0.1.3.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元组"><span class="nav-number">0.1.4.</span> <span class="nav-text">元组</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-2"><span class="nav-number">0.1.4.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字典"><span class="nav-number">0.1.5.</span> <span class="nav-text">字典</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#删除字典元素"><span class="nav-number">0.1.5.1.</span> <span class="nav-text">删除字典元素</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#内置方法："><span class="nav-number">0.1.5.2.</span> <span class="nav-text">内置方法：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-3"><span class="nav-number">0.1.5.3.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">0.2.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#算数运算符"><span class="nav-number">0.2.1.</span> <span class="nav-text">算数运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位运算符"><span class="nav-number">0.2.2.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">0.2.3.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#成员运算符"><span class="nav-number">0.2.4.</span> <span class="nav-text">成员运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#身份运算符"><span class="nav-number">0.2.5.</span> <span class="nav-text">身份运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串运算符"><span class="nav-number">0.2.6.</span> <span class="nav-text">字符串运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运算符优先级"><span class="nav-number">0.2.7.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语句"><span class="nav-number">0.3.</span> <span class="nav-text">语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pass-语句"><span class="nav-number">0.3.1.</span> <span class="nav-text">pass 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例："><span class="nav-number">0.3.1.1.</span> <span class="nav-text">实例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数学函数"><span class="nav-number">0.4.</span> <span class="nav-text">数学函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#math-模块、cmath-模块"><span class="nav-number">0.4.1.</span> <span class="nav-text">math 模块、cmath 模块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Python数学函数"><span class="nav-number">0.4.2.</span> <span class="nav-text">Python数学函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Python随机数函数"><span class="nav-number">0.4.3.</span> <span class="nav-text">Python随机数函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Python三角函数"><span class="nav-number">0.4.4.</span> <span class="nav-text">Python三角函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Python数学常量"><span class="nav-number">0.4.5.</span> <span class="nav-text">Python数学常量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间"><span class="nav-number">0.5.</span> <span class="nav-text">时间</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#time"><span class="nav-number">0.5.1.</span> <span class="nav-text">time</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Time-模块"><span class="nav-number">0.5.2.</span> <span class="nav-text">Time 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-4"><span class="nav-number">0.5.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#日历（Calendar）模块"><span class="nav-number">0.5.3.</span> <span class="nav-text">日历（Calendar）模块</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-5"><span class="nav-number">0.5.3.1.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">0.6.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义一个函数"><span class="nav-number">0.6.1.</span> <span class="nav-text">定义一个函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可更改-mutable-与不可更改-immutable-对象"><span class="nav-number">0.6.2.</span> <span class="nav-text">可更改(mutable)与不可更改(immutable)对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-6"><span class="nav-number">0.6.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数"><span class="nav-number">0.6.3.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#不定长参数"><span class="nav-number">0.6.3.1.</span> <span class="nav-text">不定长参数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#匿名函数"><span class="nav-number">0.6.4.</span> <span class="nav-text">匿名函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#语法"><span class="nav-number">0.6.4.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-7"><span class="nav-number">0.6.4.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python中的包"><span class="nav-number">0.7.</span> <span class="nav-text">Python中的包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件"><span class="nav-number">0.8.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#读取键盘输入"><span class="nav-number">0.8.1.</span> <span class="nav-text">读取键盘输入</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#raw-input函数"><span class="nav-number">0.8.1.1.</span> <span class="nav-text">raw_input函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#input函数"><span class="nav-number">0.8.1.2.</span> <span class="nav-text">input函数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#打开和关闭文件"><span class="nav-number">0.8.2.</span> <span class="nav-text">打开和关闭文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#open-函数"><span class="nav-number">0.8.2.1.</span> <span class="nav-text">open 函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#File对象的属性"><span class="nav-number">0.8.2.2.</span> <span class="nav-text">File对象的属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#write-方法"><span class="nav-number">0.8.2.3.</span> <span class="nav-text">write()方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#read-方法"><span class="nav-number">0.8.2.4.</span> <span class="nav-text">read()方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#文件定位"><span class="nav-number">0.8.2.5.</span> <span class="nav-text">文件定位</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#重命名和删除文件"><span class="nav-number">0.8.2.6.</span> <span class="nav-text">重命名和删除文件</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Python里的目录："><span class="nav-number">0.8.3.</span> <span class="nav-text">Python里的目录：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#mkdir-方法"><span class="nav-number">0.8.3.1.</span> <span class="nav-text">mkdir()方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#chdir-方法"><span class="nav-number">0.8.3.2.</span> <span class="nav-text">chdir()方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#getcwd-方法："><span class="nav-number">0.8.3.3.</span> <span class="nav-text">getcwd()方法：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#rmdir-方法"><span class="nav-number">0.8.3.4.</span> <span class="nav-text">rmdir()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常处理"><span class="nav-number">0.9.</span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#try-except语句。"><span class="nav-number">0.9.1.</span> <span class="nav-text">try/except语句。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#try-finally-语句"><span class="nav-number">0.9.2.</span> <span class="nav-text">try-finally 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-8"><span class="nav-number">0.9.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#触发异常"><span class="nav-number">0.9.3.</span> <span class="nav-text">触发异常</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-9"><span class="nav-number">0.9.3.1.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面向对象"><span class="nav-number">0.10.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础重载方法"><span class="nav-number">0.10.1.</span> <span class="nav-text">基础重载方法</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#巩固python基础"><span class="nav-number">1.</span> <span class="nav-text">巩固python基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中文编码"><span class="nav-number">1.1.</span> <span class="nav-text">中文编码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标识符"><span class="nav-number">1.2.</span> <span class="nav-text">标识符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行和缩进"><span class="nav-number">1.3.</span> <span class="nav-text">行和缩进</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多行语句"><span class="nav-number">1.4.</span> <span class="nav-text">多行语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Print-输出"><span class="nav-number">1.5.</span> <span class="nav-text">Print 输出</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#b"><span class="nav-number"></span> <span class="nav-text">b</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标准数据类型"><span class="nav-number">0.1.</span> <span class="nav-text">标准数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数字"><span class="nav-number">0.1.1.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串"><span class="nav-number">0.1.2.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例"><span class="nav-number">0.1.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#列表"><span class="nav-number">0.1.3.</span> <span class="nav-text">列表</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#列表方法"><span class="nav-number">0.1.3.1.</span> <span class="nav-text">列表方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-1"><span class="nav-number">0.1.3.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#元组"><span class="nav-number">0.1.4.</span> <span class="nav-text">元组</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-2"><span class="nav-number">0.1.4.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字典"><span class="nav-number">0.1.5.</span> <span class="nav-text">字典</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#删除字典元素"><span class="nav-number">0.1.5.1.</span> <span class="nav-text">删除字典元素</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#内置方法："><span class="nav-number">0.1.5.2.</span> <span class="nav-text">内置方法：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-3"><span class="nav-number">0.1.5.3.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#运算符"><span class="nav-number">0.2.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#算数运算符"><span class="nav-number">0.2.1.</span> <span class="nav-text">算数运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#位运算符"><span class="nav-number">0.2.2.</span> <span class="nav-text">位运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">0.2.3.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#成员运算符"><span class="nav-number">0.2.4.</span> <span class="nav-text">成员运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#身份运算符"><span class="nav-number">0.2.5.</span> <span class="nav-text">身份运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字符串运算符"><span class="nav-number">0.2.6.</span> <span class="nav-text">字符串运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#运算符优先级"><span class="nav-number">0.2.7.</span> <span class="nav-text">运算符优先级</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#语句"><span class="nav-number">0.3.</span> <span class="nav-text">语句</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pass-语句"><span class="nav-number">0.3.1.</span> <span class="nav-text">pass 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例："><span class="nav-number">0.3.1.1.</span> <span class="nav-text">实例：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数学函数"><span class="nav-number">0.4.</span> <span class="nav-text">数学函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#math-模块、cmath-模块"><span class="nav-number">0.4.1.</span> <span class="nav-text">math 模块、cmath 模块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Python随机数函数"><span class="nav-number">0.4.2.</span> <span class="nav-text">Python随机数函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Python三角函数"><span class="nav-number">0.4.3.</span> <span class="nav-text">Python三角函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Python数学常量"><span class="nav-number">0.4.4.</span> <span class="nav-text">Python数学常量</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间"><span class="nav-number">0.5.</span> <span class="nav-text">时间</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#time"><span class="nav-number">0.5.1.</span> <span class="nav-text">time</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Time-模块"><span class="nav-number">0.5.2.</span> <span class="nav-text">Time 模块</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-4"><span class="nav-number">0.5.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#日历（Calendar）模块"><span class="nav-number">0.5.3.</span> <span class="nav-text">日历（Calendar）模块</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-5"><span class="nav-number">0.5.3.1.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数"><span class="nav-number">0.6.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义一个函数"><span class="nav-number">0.6.1.</span> <span class="nav-text">定义一个函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#可更改-mutable-与不可更改-immutable-对象"><span class="nav-number">0.6.2.</span> <span class="nav-text">可更改(mutable)与不可更改(immutable)对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-6"><span class="nav-number">0.6.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#参数"><span class="nav-number">0.6.3.</span> <span class="nav-text">参数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#不定长参数"><span class="nav-number">0.6.3.1.</span> <span class="nav-text">不定长参数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#匿名函数"><span class="nav-number">0.6.4.</span> <span class="nav-text">匿名函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#语法"><span class="nav-number">0.6.4.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-7"><span class="nav-number">0.6.4.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python中的包"><span class="nav-number">0.7.</span> <span class="nav-text">Python中的包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件"><span class="nav-number">0.8.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#读取键盘输入"><span class="nav-number">0.8.1.</span> <span class="nav-text">读取键盘输入</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#raw-input函数"><span class="nav-number">0.8.1.1.</span> <span class="nav-text">raw_input函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#input函数"><span class="nav-number">0.8.1.2.</span> <span class="nav-text">input函数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#打开和关闭文件"><span class="nav-number">0.8.2.</span> <span class="nav-text">打开和关闭文件</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#open-函数"><span class="nav-number">0.8.2.1.</span> <span class="nav-text">open 函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#File对象的属性"><span class="nav-number">0.8.2.2.</span> <span class="nav-text">File对象的属性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#write-方法"><span class="nav-number">0.8.2.3.</span> <span class="nav-text">write()方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#read-方法"><span class="nav-number">0.8.2.4.</span> <span class="nav-text">read()方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#文件定位"><span class="nav-number">0.8.2.5.</span> <span class="nav-text">文件定位</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#重命名和删除文件"><span class="nav-number">0.8.2.6.</span> <span class="nav-text">重命名和删除文件</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Python里的目录："><span class="nav-number">0.8.3.</span> <span class="nav-text">Python里的目录：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#mkdir-方法"><span class="nav-number">0.8.3.1.</span> <span class="nav-text">mkdir()方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#chdir-方法"><span class="nav-number">0.8.3.2.</span> <span class="nav-text">chdir()方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#getcwd-方法："><span class="nav-number">0.8.3.3.</span> <span class="nav-text">getcwd()方法：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#rmdir-方法"><span class="nav-number">0.8.3.4.</span> <span class="nav-text">rmdir()方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常处理"><span class="nav-number">0.9.</span> <span class="nav-text">异常处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#try-except语句。"><span class="nav-number">0.9.1.</span> <span class="nav-text">try/except语句。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#try-finally-语句"><span class="nav-number">0.9.2.</span> <span class="nav-text">try-finally 语句</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-8"><span class="nav-number">0.9.2.1.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#触发异常"><span class="nav-number">0.9.3.</span> <span class="nav-text">触发异常</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#实例-9"><span class="nav-number">0.9.3.1.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#面向对象"><span class="nav-number">0.10.</span> <span class="nav-text">面向对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础重载方法"><span class="nav-number">0.10.1.</span> <span class="nav-text">基础重载方法</span></a></li></ol></li></ol></li></div>
             
 
           </div>
