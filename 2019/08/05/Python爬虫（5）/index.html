@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/scrapy_principle.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/scrapy_tree.png">
-<meta property="og:updated_time" content="2019-09-15T02:38:25.650Z">
+<meta property="og:updated_time" content="2019-09-15T04:45:36.983Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python爬虫（5）">
 <meta name="twitter:description" content="Python爬虫之scrapy框架  Scrapy是Python开发的一个快速、高层次的屏幕抓取和web抓取框架，用于抓取web站点并从页面中提取结构化的数据。Scrapy用途广泛，可以用于数据挖掘、监测和自动化测试。">
@@ -348,6 +348,17 @@
 
                 
                 
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python爬虫/框架/" itemprop="url" rel="index">
+                    <span itemprop="name">框架</span>
+                  </a>
+                </span>
+
+                
+                
               
             </span>
           
@@ -387,7 +398,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  1.4k
                 </span>
               
 
@@ -403,7 +414,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  5
                 </span>
               
             </div>
@@ -458,7 +469,7 @@
 <p>scrapy startproject [项目名字]</p>
 </blockquote>
 <ol start="2">
-<li>创建爬虫：进入项目所在的路径，执行命令：</li>
+<li>创建爬虫：<strong>进入项目所在的路径</strong>，执行命令：</li>
 </ol>
 <blockquote>
 <p>scrapy genspider [爬虫名字] [爬虫的域名] </p>
@@ -468,13 +479,18 @@
 <li>生成目录如下：<br><img src="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/scrapy_tree.png" alt="scrapy框架爬虫目录"></li>
 </ol>
 <ul>
-<li>items.py: 用来存放爬虫爬取下来数据的模型。</li>
-<li>middlewares.py: 用来存放各种中间件的文件.</li>
-<li>pipelines.py:用来将items的模型 存储到本地磁盘中。</li>
-<li>settings.py: 本爬虫的一些配置信息(比如请求头、多久发送一次请求、ip代理池等)。</li>
+<li>items.py: 用来存放爬虫爬取下来数据的模型。eg:content = scrapy.Field()</li>
+<li>middlewares.py: 用来存放各种中间件的文件.下载器中间件可以用来设置代理ip、user-agent来反反爬虫，需要在配置文件里配置SPIDER_MIDDLEWARES，不然就不会启动中间件。</li>
+<li>pipelines.py:用来将items的模型 存储到本地磁盘中。里面存放pipline类，类中包括有<strong>init</strong>函数(用来打开存储数据的文件，例如json文件，或者连接数据库)、open_spider()（和<strong>init</strong>函数一样，但一般使用<strong>init</strong>函数）、process_item()（写入数据到文件中、或者执行数据库插入命令）、close_spider()（关闭文件）.也是要去setting.py文件中取消ITEM_PIPELINES 注释，你要使用哪个pipline类就取消哪一个的注释，也可以在后面设置优先级。</li>
+<li>settings.py: 本爬虫的一些配置信息(比如请求头、是否遵从机器人协议、下载延迟等)。</li>
 <li>scrapy.cfg:  项目的配置文件。</li>
-<li>spiders包: 以后所有的爬虫，都是存放到这个里面。</li>
+<li>spiders包: 以后所有的爬虫，都是存放到这个里面。做解析页面的操作，最后yeild返回 items数据。</li>
 </ul>
+<h2 id="Scrapy-shell终端"><a href="#Scrapy-shell终端" class="headerlink" title="Scrapy shell终端"></a>Scrapy shell终端</h2><p>Scrapy shell是一个交互式终端，可以用来检测你用XPatn或者CSS表达式解析网页是否错误。避免了每次修改都要运行一次爬虫。</p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><p>在cmd终端执行如下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell [url]</span><br></pre></td></tr></table></figure>
+<p>[url]即你打算解析的网页的网址</p>
+<p>然后输入你的XPath表达式，判断结果是否真确。</p>
 <h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h3 id="糗事百科Scrapy爬虫笔记"><a href="#糗事百科Scrapy爬虫笔记" class="headerlink" title="糗事百科Scrapy爬虫笔记:"></a>糗事百科Scrapy爬虫笔记:</h3><ol>
 <li>response是一个‘scrapy. http.response.html.HtmlResponse’对象。可以执行‘xpath’和‘css’语法来提取数据。</li>
 </ol>
@@ -680,7 +696,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -691,7 +707,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -702,7 +718,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -765,7 +781,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python爬虫之scrapy框架"><span class="nav-number">1.</span> <span class="nav-text">Python爬虫之scrapy框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装及介绍"><span class="nav-number">1.1.</span> <span class="nav-text">安装及介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档"><span class="nav-number">1.1.2.</span> <span class="nav-text">文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.3.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scrapy架构"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Scrapy架构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目创建"><span class="nav-number">1.2.</span> <span class="nav-text">项目创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战"><span class="nav-number">1.3.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#糗事百科Scrapy爬虫笔记"><span class="nav-number">1.3.1.</span> <span class="nav-text">糗事百科Scrapy爬虫笔记:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JsonItemExporter和JsonLinesItemExporter"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">JsonItemExporter和JsonLinesItemExporter</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Python爬虫之scrapy框架"><span class="nav-number">1.</span> <span class="nav-text">Python爬虫之scrapy框架</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装及介绍"><span class="nav-number">1.1.</span> <span class="nav-text">安装及介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文档"><span class="nav-number">1.1.2.</span> <span class="nav-text">文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍"><span class="nav-number">1.1.3.</span> <span class="nav-text">介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Scrapy架构"><span class="nav-number">1.1.3.1.</span> <span class="nav-text">Scrapy架构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目创建"><span class="nav-number">1.2.</span> <span class="nav-text">项目创建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scrapy-shell终端"><span class="nav-number">1.3.</span> <span class="nav-text">Scrapy shell终端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#用法"><span class="nav-number">1.3.1.</span> <span class="nav-text">用法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实战"><span class="nav-number">1.4.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#糗事百科Scrapy爬虫笔记"><span class="nav-number">1.4.1.</span> <span class="nav-text">糗事百科Scrapy爬虫笔记:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#JsonItemExporter和JsonLinesItemExporter"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">JsonItemExporter和JsonLinesItemExporter</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
