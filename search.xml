@@ -168,8 +168,8 @@
         <category>MYSQL数据库</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>MySQL</tag>
+        <tag>python</tag>
         <tag>PyMySQL</tag>
       </tags>
   </entry>
@@ -181,9 +181,9 @@
         <category>框架</category>
       </categories>
       <tags>
+        <tag>python</tag>
         <tag>django</tag>
         <tag>mysql</tag>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>

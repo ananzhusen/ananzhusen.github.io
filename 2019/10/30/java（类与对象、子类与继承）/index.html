@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="在java课程学习之中对类与对象、子类与继承有一些更深的理解，记录在这篇博客中。 类与对象 （1）一个java文件里面只能有一个主类，主类即类前面加一个public修饰。 （2）实例方法既能操作实例变量和类变量（前面加static修饰），也能调用实例方法和类方法。类方法只能操作类变量和调用类方法。类变量在主函数第一次使用该类时就为它分配了内存空间，防止堆里面，该类创建的所有对象共同使用该类的类变量">
+<meta name="description" content="在java课程学习之中对类与对象、子类与继承有一些更深的理解，记录在这篇博客中。">
 <meta name="keywords" content="类与对象,子类与继承">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java（类与对象、子类与继承）">
 <meta property="og:url" content="http://Anzusen.com/2019/10/30/java（类与对象、子类与继承）/index.html">
 <meta property="og:site_name" content="Anzhusen">
-<meta property="og:description" content="在java课程学习之中对类与对象、子类与继承有一些更深的理解，记录在这篇博客中。 类与对象 （1）一个java文件里面只能有一个主类，主类即类前面加一个public修饰。 （2）实例方法既能操作实例变量和类变量（前面加static修饰），也能调用实例方法和类方法。类方法只能操作类变量和调用类方法。类变量在主函数第一次使用该类时就为它分配了内存空间，防止堆里面，该类创建的所有对象共同使用该类的类变量">
+<meta property="og:description" content="在java课程学习之中对类与对象、子类与继承有一些更深的理解，记录在这篇博客中。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/Upper_transition_object.jpg">
-<meta property="og:updated_time" content="2019-10-30T12:43:11.896Z">
+<meta property="og:updated_time" content="2019-10-30T12:47:24.493Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java（类与对象、子类与继承）">
-<meta name="twitter:description" content="在java课程学习之中对类与对象、子类与继承有一些更深的理解，记录在这篇博客中。 类与对象 （1）一个java文件里面只能有一个主类，主类即类前面加一个public修饰。 （2）实例方法既能操作实例变量和类变量（前面加static修饰），也能调用实例方法和类方法。类方法只能操作类变量和调用类方法。类变量在主函数第一次使用该类时就为它分配了内存空间，防止堆里面，该类创建的所有对象共同使用该类的类变量">
+<meta name="twitter:description" content="在java课程学习之中对类与对象、子类与继承有一些更深的理解，记录在这篇博客中。">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/ananzhusen/ananzhusen.github.io/master/image/Upper_transition_object.jpg">
 
 
@@ -424,6 +424,7 @@
 
       
         <p>在java课程学习之中对类与对象、子类与继承有一些更深的理解，记录在这篇博客中。</p>
+<a id="more"></a>
 <h1 id="类与对象"><a href="#类与对象" class="headerlink" title="类与对象"></a>类与对象</h1><p> （1）一个java文件里面只能有一个主类，主类即类前面加一个public修饰。<br> （2）实例方法既能操作实例变量和类变量（前面加static修饰），也能调用实例方法和类方法。类方法只能操作类变量和调用类方法。类变量在主函数第一次使用该类时就为它分配了内存空间，防止堆里面，该类创建的所有对象共同使用该类的类变量。<br>  (3) 包语句：如果你导入（import）了两个包且他们的类名相同。方法有两种:①两个类创建对象的时候都加上前缀包目录，就不需要写import导入包语句了。②一个类使用import导入包语句，创建对象就可以直接使用类名（不用加目录前缀），如果你要用另一个创建对象则需要写上前缀包目录。<br>  （4）构造方法匹配问题：如果你用类定义一个对象，但该类有多个构造方法，则根据参数个数和参数类型匹配。还有下列情况：①如果你定义了有参构造函数，编译器就不会给你生成无参构造函数，用该类创建对象时是不允许无实参的，如果要创建无参对象，就要自己在该类里创建无参构造函数。② 如果你在类中定义了参数的优先级高构造函数，在创建对象时就不能传优先级低的参数。③ 如果你创建的对象参数类型在类中的构造函数没有，则他会找到参数优先级比他高的构造函数。优先级如下：从左到右增高</p>
 <blockquote>
 <p>byte short char int long float double</p>
@@ -757,7 +758,7 @@ var jiathis_config={
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
